@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../public/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=MedievalSharp&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/Icon.svg" type="image/svg+xml">
+
+    <title>City of Wispers</title>
+</head>
+<body>
+    
+<header class="header-main">
+    <div class="container"> 
+        <div class="d-flex flex-wrap justify-content-between align-items-center py-3"> 
+            <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+                <span class="desctiptrion"  data-i18n="header.title"></span>
+            </a> 
+            <ul class="nav nav-pills"> 
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-i18n="header.nav.home" ></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-i18n="header.nav.about"></a>
+                </li>
+            </ul>
+            <!-- language switcher -->
+            <div>
+                <ul class="nav nav-pills"> 
+                <li class="nav-item">
+                    <button id="en" class="nav-link">EN</button>
+                </li>
+                <li class="nav-item">
+                    <button id="bg" class="nav-link">BG</button>
+                </li> 
+                <li class="nav-item">
+                    <button id="ru" class="nav-link">RU</button>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="intro-wrapper">
+    <img class="intro-image" src="../assets/forSite.png" alt="">
+
+    <div class="text-card">
+        <h1 data-i18n="intro.title"></h1>
+        <p class="desctiptrion" data-i18n="intro.description">
+           
+        </p>
+    </div>
+</div>
+<section class="content">
+    <h2 data-i18n="content.about_title"></h2>
+    <p data-i18n="content.about_text">
+    </p>
+
+    <h2 data-i18n="content.section2_title"></h2>
+    <p data-i18n="content.section2_text">
+    </p>
+
+    <h2 data-i18n="content.section3_title"></h2>
+    <p data-i18n="content.section3_text">
+    </p>
+    <button id="fullscreenBtn">Play</button>
+
+<div id="game-container">
+  <!-- здесь твоя игра (canvas, iframe, div и т.д.) -->
+  <canvas id="game"></canvas>
+</div>
+  
+</section>
+<div class="footer-content"> 
+     <footer class="py-3 my-4 border-top">
+         <ul class="nav justify-content-center pb-3 my-3">
+            <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-body-light" data-i18n="footer.home"></a></li> 
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary" data-i18n="footer.features"></a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary" data-i18n="footer.pricing"></a></li> 
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary" data-i18n="footer.faqs"></a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary" data-i18n="footer.about"></a></li> 
+     </footer> 
+</div>
+
+
+<script>
+const header = document.querySelector(".header-main");
+const DETECTOR_HEIGHT = 80;
+
+header.style.opacity = "0";
+header.style.pointerEvents = "none";
+header.style.transition = "opacity 0.3s ease";
+
+document.addEventListener("mousemove", (e) => {
+    if (e.clientY < DETECTOR_HEIGHT) {
+        if (header.style.opacity !== "1") {
+            header.style.opacity = "1";
+            header.style.pointerEvents = "auto";
+        }
+    } else {
+        if (header.style.opacity !== "0") {
+            header.style.opacity = "0";
+            header.style.pointerEvents = "none";
+        }
+    }
+});
+
+window.addEventListener("scroll", () => {
+    const maxScroll = 600; 
+    const scroll = Math.min(window.scrollY, maxScroll);
+
+    const progress = scroll / maxScroll;
+    const blur = progress * 40;
+    const scale = 1.15 - progress * 0.15;
+
+    const img = document.querySelector(".intro-image");
+    img.style.filter = `blur(${blur}px)`;
+    img.style.transform = `scale(${scale})`;
+    
+    if (scroll > 0) {
+        header.style.opacity = "1";
+        header.style.pointerEvents = "auto";
+    }
+});
+
+const btn = document.getElementById("fullscreenBtn");
+const game = document.getElementById("game-container");
+
+btn.addEventListener("click", () => {
+  if (!document.fullscreenElement) {
+    game.requestFullscreen().catch(err => {
+      console.error("Ошибка fullscreen:", err);
+    });
+  } else {
+    document.exitFullscreen();
+  }
+});
+</script>
+
+<script type="module" src="./localization.js"></script>
+</body>
+</html>

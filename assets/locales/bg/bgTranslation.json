@@ -1,0 +1,28 @@
+{
+  "header": {
+    "title": "Град на Шепоти",
+    "nav": {
+      "home": "Начало",
+      "about": "За проекта"
+    }
+  },
+  "intro": {
+    "title": "Град на Шепоти",
+    "description": "Описание на български..."
+  },
+  "content": {
+    "about_title": "За проекта",
+    "about_text": "Текст на български...",
+    "section2_title": "Раздел 2",
+    "section2_text": "Текст на български...",
+    "section3_title": "Раздел 3",
+    "section3_text": "Текст на български..."
+  },
+  "footer": {
+    "home": "Начало",
+    "features": "Функции",
+    "pricing": "Цени",
+    "faqs": "ЧЗВ",
+    "about": "За нас"
+  }
+}
