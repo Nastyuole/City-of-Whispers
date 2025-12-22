@@ -32,21 +32,50 @@ async function loadLanguage(lang) {
     console.error('Error loading language:', err);
   }
 }
-
+// Dispatch event to iframes
+function dispatchLanguageChange(lang) {
+  const event = new CustomEvent('languageChanged', { detail: { lang } });
+  window.dispatchEvent(event);
+  const iframe = document.getElementById('game-frame');
+  if (iframe?.contentWindow) {
+    iframe.contentWindow.dispatchEvent(event);
+  }
+}
 document.getElementById('ru').addEventListener('click', () => {
   saveLang('ru');
   loadLanguage('ru');
+  dispatchLanguageChange('ru');
 });
 
 document.getElementById('en').addEventListener('click', () => {
   saveLang('en');
   loadLanguage('en');
+ dispatchLanguageChange('en');
 });
 
 document.getElementById('bg').addEventListener('click', () => {
   saveLang('bg');
   loadLanguage('bg');
+  dispatchLanguageChange('bg');
 });
 
 console.log('Script loaded');
 loadLanguage(currentLang);
+
+// MAYBE REMOVE LATER
+// Ensure Play button restarts the game each click
+const playBtn = document.getElementById('play-btn');
+if (playBtn) {
+  playBtn.addEventListener('click', () => {
+    const iframe = document.getElementById('game-frame');
+    try {
+      // prefer postMessage to instruct game iframe to reload scenes
+      iframe?.contentWindow?.postMessage({ type: 'restartGame' }, '*');
+      // also reload iframe src as a fallback
+      if (iframe) {
+        const src = iframe.getAttribute('src');
+        iframe.setAttribute('src', src);
+      }
+    } catch (e) { console.error('Error restarting game iframe', e); }
+  });
+}

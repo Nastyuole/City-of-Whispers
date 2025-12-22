@@ -1,0 +1,54 @@
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #0b0b0b;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+#game {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Диалоговое окно */
+#dialog-box {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,.6);
+}
+
+/* Текст */
+#dialog-text {
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+/* Кнопки */
+#choices {
+  margin-top: 15px;
+}
+
+.choice-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px;
+  font-size: 16px;
+  background: #1e1e1e;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.choice-btn:hover {
+  background: #333;
+}

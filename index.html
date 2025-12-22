@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=MedievalSharp&display=swap" rel="stylesheet">
-    <link rel="icon" href="../assets/Icon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/Icon.png" type="image/svg+xml">
 
     <title>City of Wispers</title>
 </head>
@@ -17,9 +17,10 @@
 <header class="header-main">
     <div class="container"> 
         <div class="d-flex flex-wrap justify-content-between align-items-center py-3"> 
-            <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
-                <span class="desctiptrion"  data-i18n="header.title"></span>
-            </a> 
+            <div class="d-flex align-items-center link-body-emphasis text-decoration-none">
+                <img src="assets/Icon.png" alt="Icon" width="40" height="40" style="margin-right: 10px; vertical-align: middle;">
+                <p class="desctiptrion"  data-i18n="header.title" style="margin: 0;"></p>
+            </div> 
             <ul class="nav nav-pills"> 
                 <li class="nav-item">
                     <a href="#" class="nav-link" data-i18n="header.nav.home" ></a>
@@ -48,7 +49,7 @@
 
 
 <div class="intro-wrapper">
-    <img class="intro-image" src="../assets/forSite.png" alt="">
+    <img class="intro-image" src="assets/forSite.png" alt="">
 
     <div class="text-card">
         <h1 data-i18n="intro.title"></h1>
@@ -69,12 +70,17 @@
     <h2 data-i18n="content.section3_title"></h2>
     <p data-i18n="content.section3_text">
     </p>
-    <button id="fullscreenBtn">Play</button>
 
-<div id="game-container">
-  <!-- здесь твоя игра (canvas, iframe, div и т.д.) -->
-  <canvas id="game"></canvas>
+<div class="container" id="main-container">
+  <button class="play-button" id="play-btn">▶ Play</button>
+
+<iframe 
+    id="game-frame" 
+    src="game.html"
+    allow="fullscreen"
+  ></iframe>
 </div>
+
   
 </section>
 <div class="footer-content"> 
@@ -90,59 +96,7 @@
 </div>
 
 
-<script>
-const header = document.querySelector(".header-main");
-const DETECTOR_HEIGHT = 80;
-
-header.style.opacity = "0";
-header.style.pointerEvents = "none";
-header.style.transition = "opacity 0.3s ease";
-
-document.addEventListener("mousemove", (e) => {
-    if (e.clientY < DETECTOR_HEIGHT) {
-        if (header.style.opacity !== "1") {
-            header.style.opacity = "1";
-            header.style.pointerEvents = "auto";
-        }
-    } else {
-        if (header.style.opacity !== "0") {
-            header.style.opacity = "0";
-            header.style.pointerEvents = "none";
-        }
-    }
-});
-
-window.addEventListener("scroll", () => {
-    const maxScroll = 600; 
-    const scroll = Math.min(window.scrollY, maxScroll);
-
-    const progress = scroll / maxScroll;
-    const blur = progress * 40;
-    const scale = 1.15 - progress * 0.15;
-
-    const img = document.querySelector(".intro-image");
-    img.style.filter = `blur(${blur}px)`;
-    img.style.transform = `scale(${scale})`;
-    
-    if (scroll > 0) {
-        header.style.opacity = "1";
-        header.style.pointerEvents = "auto";
-    }
-});
-
-const btn = document.getElementById("fullscreenBtn");
-const game = document.getElementById("game-container");
-
-btn.addEventListener("click", () => {
-  if (!document.fullscreenElement) {
-    game.requestFullscreen().catch(err => {
-      console.error("Ошибка fullscreen:", err);
-    });
-  } else {
-    document.exitFullscreen();
-  }
-});
-</script>
+<script type="module" src="./index.js"></script>
 
 <script type="module" src="./localization.js"></script>
 </body>

@@ -1,0 +1,36 @@
+{
+  "scenes": {
+    "start": {
+      "text": "You wake up in a dark room.",
+      "choices": [
+        { "label": "Look around", "next": "look" },
+        { "label": "Shout", "next": "shout" }
+      ]
+    },
+    "look": {
+      "text": "Around you are old walls and a closed door.",
+      "choices": [
+        { "label": "Open the door", "next": "door" },
+        { "label": "Back", "next": "start" }
+      ]
+    },
+    "shout": {
+      "text": "Your voice is swallowed by the emptiness.",
+      "choices": [
+        { "label": "Back", "next": "start" }
+      ]
+    },
+    "door": {
+      "text": "The door is locked. You need a key.",
+      "choices": [
+        { "label": "Search for the key", "next": "key" }
+      ]
+    },
+    "key": {
+      "text": "You found a rusty key.",
+      "choices": [
+        { "label": "The End", "next": "gameExit" }
+      ]
+    }
+  }
+}

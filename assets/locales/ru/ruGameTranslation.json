@@ -1,0 +1,36 @@
+{
+  "scenes": {
+    "start": {
+      "text": "Ты просыпаешься в тёмной комнате.",
+      "choices": [
+        { "label": "Осмотреться", "next": "look" },
+        { "label": "Крикнуть", "next": "shout" }
+      ]
+    },
+    "look": {
+      "text": "Вокруг старые стены и закрытая дверь.",
+      "choices": [
+        { "label": "Открыть дверь", "next": "door" },
+        { "label": "Назад", "next": "start" }
+      ]
+    },
+    "shout": {
+      "text": "Твой голос тонет в пустоте.",
+      "choices": [
+        { "label": "Назад", "next": "start" }
+      ]
+    },
+    "door": {
+      "text": "Дверь заперта. Нужен ключ.",
+      "choices": [
+        { "label": "Искать ключ", "next": "key" }
+      ]
+    },
+    "key": {
+      "text": "Ты нашёл ржавый ключ.",
+      "choices": [
+        { "label": "Конец", "next": "gameExit" }
+      ]
+    }
+  }
+}
