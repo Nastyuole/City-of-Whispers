@@ -8,7 +8,7 @@
   },
   "intro": {
     "title": "City of Whispers",
-    "description": "\"City of Whispers\" is a dark nonlinear text adventure game where a living city turns people's fears, desires, and mistakes into reality. You play as a person chosen by the city itself—not chosen, but observed. Every choice you make changes the streets, destinies, and laws of the world. There are no right paths: only consequences that cannot be predicted."
+    "description": "\"City of Whispers\" is a dark nonlinear text adventure game where a living city turns people's fears, desires, and mistakes into reality. You play a person that does not have something special. Every choice you make changes the streets, destinies, and laws of the world. There are no right paths: only consequences that cannot be predicted."
   },
   "content": {
     "about_title": "About the Project",
@@ -20,9 +20,9 @@
   },
   "footer": {
     "home": "Home",
-    "features": "Features",
-    "pricing": "Pricing",
-    "faqs": "FAQs",
-    "about": "About"
+    "gmail": "Gmail",
+    "linkedin": "LinkedIn",
+    "contactMe": "Contact Me",
+    "github": "GitHub"
   }
 }

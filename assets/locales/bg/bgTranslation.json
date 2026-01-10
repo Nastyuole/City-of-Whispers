@@ -20,9 +20,9 @@
   },
   "footer": {
     "home": "Начало",
-    "features": "Функции",
-    "pricing": "Цени",
-    "faqs": "ЧЗВ",
-    "about": "За нас"
+    "gmail": "Gmail",
+    "linkedin": "LinkedIn",
+    "contactMe": "Контакт за мен",
+    "github": "GitHub"
   }
 }

@@ -1,54 +1,305 @@
-html, body {
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  background: #0b0b0b;
-  color: white;
-  font-family: Arial, sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+body {
+    background: #0c0c0c;
+    color: #dfd8d8;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.7;
+    height: 100vh;
+    overflow: hidden;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(20, 40, 80, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(80, 20, 40, 0.1) 0%, transparent 50%);
+}
+
+/* Container */
 #game {
-  width: 100%;
-  height: 100%;
-  position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
 }
 
-/* Диалоговое окно */
 #dialog-box {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70%;
-  background: rgba(0, 0, 0, 0.75);
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 0 20px rgba(0,0,0,.6);
+    width: 100%;
+    max-width: 800px;
+    height: 90vh;
+    background: rgba(20, 20, 30, 0.95);
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 
+        0 0 40px rgba(0, 0, 0, 0.8),
+        inset 0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Текст */
+/* Line above for styling */
+#dialog-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #4a6fa5 20%, 
+        #88c0d0 50%, 
+        #4a6fa5 80%, 
+        transparent 100%);
+}
+
 #dialog-text {
-  font-size: 18px;
-  line-height: 1.4;
+    flex-grow: 1;
+    overflow-y: auto;
+    font-size: 18px;
+    padding: 20px;
+    margin-bottom: 30px;
+    background: rgba(10, 10, 15, 0.5);
+    border-radius: 5px;
+    border-left: 3px solid #333;
+    border-right: 1px solid #222;
+    white-space: pre-line;
+    line-height: 1.8;
+    text-align: justify;
+    max-height: 65vh;
+    scrollbar-width: thin;
+    scrollbar-color: #444 #222;
 }
 
-/* Кнопки */
+/* Sctollbar styling */
+#dialog-text::-webkit-scrollbar {
+    width: 8px;
+}
+
+#dialog-text::-webkit-scrollbar-track {
+    background: rgba(20, 20, 30, 0.5);
+    border-radius: 4px;
+}
+
+#dialog-text::-webkit-scrollbar-thumb {
+    background: #4a6fa5;
+    border-radius: 4px;
+}
+
+#dialog-text::-webkit-scrollbar-thumb:hover {
+    background: #5a8fc5;
+}
+
 #choices {
-  margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
 }
 
 .choice-btn {
-  width: 100%;
-  margin-top: 8px;
-  padding: 10px;
-  font-size: 16px;
-  background: #1e1e1e;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
+    background: linear-gradient(to right, rgba(40, 40, 60, 0.8), rgba(30, 30, 50, 0.8));
+    color: #d0d0e0;
+    border: 1px solid #445;
+    padding: 16px 25px;
+    font-size: 17px;
+    font-family: 'Georgia', serif;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    text-align: left;
+    position: relative;
+    overflow: hidden
 }
 
 .choice-btn:hover {
-  background: #333;
+    background: linear-gradient(to right, rgba(60, 60, 100, 0.9), rgba(50, 50, 80, 0.9));
+    border-color: #667;
+    transform: translateX(10px);
+    box-shadow: 
+        0 5px 20px rgba(0, 0, 0, 0.4),
+        0 0 10px rgba(74, 111, 165, 0.3);
+}
+
+.choice-btn:active {
+    transform: translateX(5px);
+    background: linear-gradient(to right, rgba(35, 35, 55, 0.9), rgba(25, 25, 45, 0.9));
+}
+
+/* Arrow on buttons when navigating */
+.choice-btn::after {
+    content: "›";
+    position: absolute;
+    right: 20px;
+    opacity: 0;
+    transition: all 0.3s;
+    font-size: 20px;
+}
+
+.choice-btn:hover::after {
+    opacity: 1;
+    right: 15px;
+}
+
+/* Special styles for text */
+#dialog-text.tense {
+    color: #dfd8d8;
+    border-left-color: #555479;
+    text-shadow: 0 0 10px rgba(255, 153, 102, 0.2);
+}
+
+#dialog-text.important {
+    color: #ff6b6b;
+    font-weight: bold;
+    border-left-color: #ff6b6b;
+}
+
+#dialog-text.thought {
+    color: #88c0d0;
+    font-style: italic;
+    border-left-color: #88c0d0;
+}
+
+#dialog-text.action {
+    color: #a3be8c;
+    border-left-color: #a3be8c;
+}
+
+#dialog-text.shock {
+    color: #fcbca2;
+    animation: pulse 2s infinite;
+    border-left-color: #ffd166;
+}
+
+/* Animation for pulse effect */
+@keyframes pulse {
+    0% { text-shadow: 0 0 5px rgba(255, 209, 102, 0.3); }
+    50% { text-shadow: 0 0 15px rgba(255, 209, 102, 0.6); }
+    100% { text-shadow: 0 0 5px rgba(255, 209, 102, 0.3); }
+}
+
+/* Animation for fade in */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+#dialog-text {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* paragraph-level helpers for game text */
+.italic {
+    font-style: italic;
+}
+
+/* compact paragraph: preserve newlines inside a single <p> while keeping it visually compact */
+.compact {
+    white-space: pre-line; /* honor \n as line breaks inside the paragraph */
+    line-height: 1.45;
+    margin-bottom: 0.75em;
+}
+
+/* Adaptive styles */
+@media (max-width: 768px) {
+    #game {
+        padding: 10px;
+    }
+    
+    #dialog-box {
+        height: 95vh;
+        padding: 20px;
+    }
+    
+    #dialog-text {
+        font-size: 16px;
+        padding: 15px;
+        max-height: 60vh;
+    }
+    
+    .choice-btn {
+        padding: 14px 20px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    #dialog-box {
+        padding: 15px;
+    }
+    
+    #dialog-text {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    
+    .choice-btn {
+        padding: 12px 15px;
+        font-size: 15px;
+    }
+}
+
+/* Styles for viewed choices */
+.choice-btn.choice-viewed {
+    opacity: 0.7;
+    background: linear-gradient(to right, rgba(50, 50, 70, 0.6), rgba(40, 40, 60, 0.6));
+    border-style: dashed;
+}
+
+.choice-btn.choice-viewed:hover {
+    opacity: 0.9;
+    background: linear-gradient(to right, rgba(60, 60, 90, 0.8), rgba(50, 50, 80, 0.8));
+}
+
+.continue-btn {
+    background: linear-gradient(to right, rgba(80, 120, 200, 0.8), rgba(60, 100, 180, 0.8)) !important;
+    border-color: #88c0d0 !important;
+    font-weight: bold;
+}
+
+.end-btn {
+    background: linear-gradient(to right, rgba(200, 80, 80, 0.8), rgba(180, 60, 60, 0.8)) !important;
+    border-color: #270f36 !important;
+}
+
+/* Progress indicator */
+.choice-progress {
+    text-align: center;
+    color: #88c0d0;
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 5px;
+    border-top: 1px dashed #444;
+}
+
+/* Icon for types of choices */
+.choice-btn::before {
+    content: '';
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+/* Animation for new choices */
+@keyframes pulseNew {
+    0% { box-shadow: 0 0 0 0 rgba(74, 111, 165, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(74, 111, 165, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(74, 111, 165, 0); }
+}
+
+.choice-btn:not(.choice-viewed) {
+    animation: pulseNew 2s infinite;
 }
