@@ -1,35 +1,588 @@
 {
+  "ui": {
+    "explored": "Explored: {0}/{1}",
+    "continue": "Return",
+    "newGame": "New Game",
+    "continueGame": "Continue",
+    "loadGame": "Load Game",
+    "settings": "Settings",
+    "exit": "Exit",
+    "loadHeader": "Load Game",
+    "settingsHeader": "Settings",
+    "languageLabel": "Language",
+    "fontSizeLabel": "Font Size",
+    "back": "Back",
+    "saveSlot": "Save Slot {0}",
+    "empty": "Empty",
+    "end": "End"
+  },
   "scenes": {
     "start": {
-      "text": "You wake up in a dark room.",
+      "scene_id": "start",
+      "paragraphs": [
+        {"text": "Day 1. Awakening."},
+        {"text": "You don't wake up. You're <strong>torn</strong> from sleep"},
+        {"text": "A blow—to the lungs. The first breath—and instead of air, you swallow something thick, tart, sickeningly sweet. It's not just a smell. It's a taste smeared across your tongue, clinging to your palate. You choke, take a convulsive gulp—and it only gets worse. The sweetness fades, leaving bitterness. Strong, obsessive. Like... like if you... you can't remember. Something from childhood? From the hospital? Not from the morgue, no, that was different. Nausea, like a hangover, overtakes you. Strange, because you didn't drink anything yesterday."},
+        {"text": "You lie with your eyes closed, trying to ward off the nausea. But it doesn't go away. It hangs in the air. You breathe—and with each inhale, the bitterness sinks deeper, into your throat, into your chest. It starts taking on a metallic tang. Steel? No... Copper. As if you licked a battery. Or... an old water tap. A gag reflex overtakes you, and you rush to the toilet in your apartment, where, barely bending over the bowl, you vomit, and only then does it get easier. You stand for a few seconds, hands braced on the sink, trying to catch your breath. You look in the mirror and freeze for a moment. The reflection makes your heart skip a beat—anxiety washes over you, cold and clammy. The face before you seems alien, as if it belongs to someone else, and you mechanically stare into it, trying to find something, anything familiar."},
+        {"text": "The longer you look, the clearer it becomes: the features have changed, distorted, but haven't completely disappeared. In the line of your eyes, the curve of your lips, you can still recognize yourself. Realizing this doesn't soothe you—on the contrary, it frightens you more than complete uncertainty."},
+        {"text": "The panic you had been holding back with sheer physical effort began to seep through your veins. This isn't a dream, not an illness. It's too much. Too... <em>palpable.</em>"},
+        {"text": "You frantically try to convince yourself that you are still you, repeating—I am Saylas Morse, <em>I am Saylas Morse.</em>—Surprisingly, the fact that you still remember your name calms you, briefly, but still."},
+        {"text": "You returned to the room, but not to the bed. To the window. You needed to see the street again. To make sure everything was alright."},
+        {"text": "What you saw outside stunned you: a blue-green fog covering the entire city. No one on the streets, empty. You look at the clock, 7:02. Usually, even if the city isn't bustling, there are still people."}
+      ],
+      "parallelGroup": "initial_investigation",
       "choices": [
-        { "label": "Look around", "next": "look" },
-        { "label": "Shout", "next": "shout" }
+        {
+          "id": "window_check",
+          "type": "parallel",
+          "label": "Check the window",
+          "next": "window_check"
+        },
+        {
+          "id": "inspect_apartment",
+          "type": "parallel",
+          "label": "Inspect the apartment",
+          "next": "inspect_apartment"
+        }
+      ],
+      "continueAfterParallel": "after_initial_check"
+    },
+    "window_check": {
+      "scene_id": "window_check",
+      "paragraphs": [
+        {"text": "You almost pressed your face against the cold glass, trying to peer into the pulsating haze."},
+        {"text": "The market square should have been full of carts, the smells of fresh bread, and loud quarrels; now it was as empty as if no one had ever been there. The crooked silhouettes of stalls were barely discernible in the blue-green gloom, like shadows."},
+        {"text": "In the distance, where the mill should be, smoke from the chimney is usually visible. Now: noth-ing. Only fog, merging with the gray sky into one toxic whole. Movement by the lamppost across the way caught your attention. Not a person. A cat. Usually a nimble, living creature. It sat, stretched into an unnaturally straight line, staring into nothing with a glassy, clouded gaze. Its fur seemed damp, matted. It didn't move. At all."},
+        {"text": "A dry, prickly shiver ran down your spine. And then, in the right corner of your vision, something shifted. Not fast. Slowly, as if underwater. It was a person. He emerged from an alley and wandered across the square. His gait was unsteady. His legs lifted and placed with difficulty, his arms swinging aimlessly. His face wasn't visible, but there was no purpose in his movements, as if he was <strong><em>lost.</em></strong>"},
+        {"text": "You couldn't look away. Your mind tried to find an explanation: maybe he's drunk? Sick? But no logical explanation came. The man moved too strangely, as if his body wasn't his own."},
+        {"text": "Suddenly he stopped. Looked straight at you. Your heart stopped. There was no life in his eyes, only emptiness. He took a few slow steps back, then turned and wandered back into the fog."},
+        {"text": "A silent question formed in your head: <em>\"Why aren't you like them?\"</em>"}
       ]
     },
-    "look": {
-      "text": "Around you are old walls and a closed door.",
-      "choices": [
-        { "label": "Open the door", "next": "door" },
-        { "label": "Back", "next": "start" }
+    "inspect_apartment": {
+      "scene_id": "inspect_apartment",
+      "paragraphs": [
+        {"text": "You make the most reasonable choice, even if driven by panic. Watching the threat is useless if you're defenseless. You need to act. You step back sharply from the window, turning away from the hypnotic, pulsating glow behind the glass. Your small room in the old house, the only dwelling you can afford, small but yours."},
+        {"text": "Your gaze, trained for finding clues, now scans the space with new, pragmatic ruthlessness."},
+        {"text": "Action plan (formulated on the fly, in fragments of thought):\n 1. Protection. \n2. Water. \n3. Tools. \n4. Information."},
+        {"text": "You start small."},
+        {"text": "Step 1: Clothing. You pull on the thickest clothes you have: rough work trousers, tuck a thick flannel long-sleeved shirt into them. Over that—a dark, heavy sweater. Skin must be covered."},
+        {"text": "Step 2: Breathing. You rummage through the dresser. No respirators, of course. But there is a long, not-so-fresh woolen scarf. You bring it to your face, inhale the smell of dust and old wool. It at least somewhat overpowers that sweet bitterness. Would it filter better wet? Or worse? You decide to leave it dry for now. You wrap the scarf around your neck, ready to pull it over your face at any moment."},
+        {"text": "Step 3: Hands. You find a pair of worn leather gloves. Not sterile, of course. The ones you once used to fix the lock. They smell of machine oil and sweat. Now that smell feels almost blessed. You pull them on. Your fingers move stiffly, but this feeling of a barrier between you and the world is priceless."},
+        {"text": "Step 4: Water and provisions. You open the cupboard. Half a loaf of stale bread, wrapped in paper. A can of stew (you were always too lazy to open it). A small flask of water. You open it and carefully sniff. It seems fine. Probably because it was sealed and not directly exposed to the fog—that's the only reason it hasn't spoiled."},
+        {"text": "Step 5: Tools. What might be useful? A kitchen knife with a dull blade. Not great, but better than nothing."},
+        {"text": "Step 6: Information. You approach your tattered newspaper from three days ago. You flip through it frantically and stumble upon an entry, unremarkably written somewhere in the corner of the paper. Just a couple of lines:"},
+        {"text": "<em>\"Locals talk about an accident on the swamp highway. A carriage overturned, carrying barrels of new medicines.\"</em>"},
+        {"text": "The line breaks off where the ink suddenly thins and fades to nothing. The paper is intact, but your gaze seems to hit a void where a continuation should be. You're sure: there was something else here once—a thought, a word, perhaps a whole sentence."},
+        {"text": "You try to concentrate, reread the line again and again, but each time you reach the same spot. A strange feeling arises, as if your mind refuses to retain what should be there, as if that part of the note is slipping not from the paper, but from your memory."},
+        {"text": "This disturbs you more than anything: you didn't just fail to pay attention then—it's as if even now you're incapable of reading what truly matters."},
+        {"text": "But you did something. It dulled the sharp edge of panic, replacing it with a focused, trembling resolve. You've prepared as much as you could."}
       ]
     },
-    "shout": {
-      "text": "Your voice is swallowed by the emptiness.",
+    "after_initial_check": {
+      "scene_id": "after_initial_check",
+      "paragraphs": [
+        {"text": "Suddenly—a sound! Creaking, loud, strained, an unnatural creak, as if a dull saw was dragged across rusty iron. Your body freezes completely still before your mind even processes the information. It's your apartment's front door creaking. That very lock you struggled to open with your key yesterday, afraid it would break."},
+        {"text": "Thoughts, which were darting from plan to plan, collapse into one sharp, icy point of fear."},
+        {"text": "Who?  \nWho could have entered?  \nWho can just... enter? In this silence?"},
+        {"text": "Footsteps. Heavy, confident. Not hurried, but measured. A distinct strike of a sole on the hallway floorboards. One. Two. Pause. Another step. A man. By the weight, by the foot placement—definitely a man."},
+        {"text": "Your gaze locks onto the open door of your room. You left it wide open while you rushed between the window and the dresser. Now that rectangle of dark hallway looks like a maw. And the sound of footsteps is approaching it. They come not from afar; they are here. Right on the threshold."},
+        {"text": "Your hand instinctively finds that dull kitchen knife. Fingers in rough gloves clench the wooden handle until your knuckles turn white. It's not a weapon. It's a pathetic piece of metal. But it's something. You step back from the door, pressing your back against the wall by the window, to see the entire doorway."},
+        {"text": "The footsteps cease. Right outside the door."},
+        {"text": "Silence returns, but it's different now. Saturated, thick, like the fog outside. Anticipation hangs in it. Someone is standing there, in the dim hallway, listening. Or looking through the crack. Your breathing, which you try to muffle, seems deafeningly loud."},
+        {"text": "Your heart pounds in your temples, your throat, your wrists—everywhere at once. Thoughts race like frightened animals: Hide? Under the bed? Run? But your legs won't obey. You're frozen, like a rabbit before a boa. Your professional mind, the part still working, analyzes: The creak—the door was opened slowly, carefully. The footsteps—purposeful. The stop at the door—assessing the situation. This isn't someone lost. This is someone looking."},
+        {"text": "And then he enters."},
+        {"text": "He doesn't burst in. He steps over the threshold smoothly, almost majestically, filling the doorway. Tall. In a long, worn coat the color of dried earth, spattered with that same glowing mucus from the street. He reeks of more than just the fog. The smell... is complex. A sharp chemical note, like from pharmacy vials, mixed with the smell of damp clay and something dry, bitter—wormwood? Sage?"},
+        {"text": "But your brain registers all this later. Because first, you see his head."},
+        {"text": "Short hair, white as the first frost or bleached flax, plastered to his skull. And his face... or rather, what concealed it. A gas mask. Old, military-issue, with huge round eyepieces like a giant dragonfly's eyes, and a long, box-shaped filter canister jutting out to the side. The lenses are slightly tinted, but behind them—darkness. And in that darkness... two tiny red points. Motionless, like distant stars in a dark night."}
+      ],
       "choices": [
-        { "label": "Back", "next": "start" }
+        {
+          "id": "encounter_figure",
+          "label": "Continue →",
+          "next": "encounter_figure"
+        }
       ]
     },
-    "door": {
-      "text": "The door is locked. You need a key.",
+    "encounter_figure": {
+      "scene_id": "encounter_figure",
+      "paragraphs": [
+        {"text": "\"Albino.\" The first thing that comes to mind. But it explains nothing. It only explains the pallor. It doesn't explain the gas mask. Doesn't explain those eyes. Doesn't explain why he's here, in your room, when the whole city is frozen."},
+        {"text": "He stops, just a few steps away from you. His masked head turns slowly, surveying the room. A smooth motion. As if he's not just looking, but studying. His gaze slides over your unmade bed, over scattered clothes, over the open case with papers, over the bottle of murky water on the floor. It lingers on your face, on your knife, on your tense posture."},
+        {"text": "He doesn't speak. Makes no threatening moves. He just stands and watches. This pause, this silent observation, is far more frightening than any threat, because the more silent and calm a person is, the more terrifying what they might do."},
+        {"text": "He finished examining the room. The red dots behind the lenses stopped on you, like two reflections of a distant fire in the dark night. In the silence, broken only by your strained breathing, his voice came from the speaker. It was distorted by the filter, but carried a strange, almost melodic intonation."},
+        {"text": "\"You're conscious?\" came from the speaker. The voice was distorted by the filter, but it held not just curiosity, but almost astonishment. \"Amazing… You're the first one I've met who's still in their right mind.\""},
+        {"text": "You don't answer. Your mind fights against panic, trying to find anything to say. But words stick in your throat."},
+        {"text": "He took a step forward, not to close the distance for an attack. Rather, he wanted to get a better look at you, like a rare exhibit. The red dots behind the lenses slid over your face, lingered on your eyes, as if searching for a glimmer of thought within them."},
+        {"text": "\"You are different from the others.\" His voice was quiet, but held certainty. \"They are all... empty. Like zombies. They wander without purpose, without reason. They simply exist.\""},
+        {"text": "He paused, as if expecting your answer. But you remain silent."},
+        {"text": "\"So what's the reason you're different from them? Why aren't you wandering the city like a lost kitten?\" the stranger asked mockingly."},
+        {"text": "\"Well? Who are you then?\""}
+      ],
       "choices": [
-        { "label": "Search for the key", "next": "key" }
+        {
+          "id": "attack_first",
+          "type": "once",
+          "label": "Attack first",
+          "next": "attack_first"
+        },
+        {
+          "id": "try_to_talk",
+          "type": "once",
+          "label": "Try to talk",
+          "next": "try_to_talk"
+        },
+        {
+          "id": "try_to_escape",
+          "type": "once",
+          "label": "Try to escape",
+          "next": "try_to_escape"
+        }
       ]
     },
-    "key": {
-      "text": "You found a rusty key.",
+    "attack_first": {
+      "scene_id": "attack_first",
+      "paragraphs": [
+        {"text": "Your choice is made in silence, between two heartbeats. The thought of dialogue with this... creature now seems not absurd, but insulting. He entered your space, breathed your air, studied you. And for that, he had to pay."},
+        {"text": "Muscles, locked in fear, now coil into a single, ready-to-release spring. You take a deep, silent breath. The knife slides smoothly behind the fold of your sweater, the cold blade pressed against your thigh. And you retreat—not a step, but a timid shuffle of a frightened animal, pressing your back against the cold wall."},
+        {"text": "\"I... I don't know,\" you mutter, your voice trembling, your gaze helplessly fixed on the floor. \"I just woke up, and everything was so...\""},
+        {"text": "The act works flawlessly. He buys into this image of a broken, lost victim. His head tilts slightly, those two crimson embers in the lenses pause—a predator assessing prey that has already surrendered."},
+        {"text": "And this is your moment."},
+        {"text": "Your lunge forward is not a fencing thrust, but an ugly, furious explosion of desperation. You don't strike at his torso, where he expects it. You put everything into the blow—from your foot to your fingertips—swinging the knife upward, aiming the tip at the vulnerable gap beneath the filter canister, at the strip of exposed neck."},
+        {"text": "And you hit the mark—for a moment. The knife whistles through the air, and you see his shoulders instinctively flinch. He didn't expect this. His reaction, honed but trained for a different attack, is a critical fraction of a second too late. He doesn't grab your arm. He jerks his head back on pure instinct, enough to save himself but not enough to completely avoid the strike. He merely recoils sharply; a thin trickle of blood runs down his neck, not enough to seriously harm him. Then the blade screeches across the metal rim of the canister, sparking a shower of blinding, acrid sparks."},
+        {"text": "And that moment of weakness becomes your undoing. Instead of leaping back, you try to follow through with the strike, losing your balance and leaving yourself open."},
+        {"text": "That was his only concession. A mistake he would not make again."},
+        {"text": "His hand, which had been hanging at his side, snaps up—not a movement, but a blurred streak in your peripheral vision. You don't see the strike. You only feel it—the crushing, dry crack of the edge of his hand against your wrist. Pain—white, blinding, searing away all thought. Your fingers open involuntarily. The knife falls with a pathetic clatter. Your arm dangles, a useless, foreign appendage."},
+        {"text": "You recoil on instinct, but he is already there. His second move is not lightning-fast, but inexorable, like the movement of a glacier. He grabs you not by the body—but by the collar of your sweater and shirt, twisting the fabric into a tight, choking garrote at your throat, and with absolute, inhuman force, rams your back against the wall. Air is forced from your lungs in a hoarse groan. You dangle in his grip, like a puppet with its strings cut. Your own clothing has become a noose."},
+        {"text": "Behind the lenses, the red dots now burn with a cold, methodical fire. Slowly, almost curiously, he brings the gas mask's visage close to your face, so you see your own reflection, twisted with pain and terror, in the dark lenses."},
+        {"text": "\"Foolish,\" hisses the distorted voice from the speaker. \"The 'fight or flight' reflex… primitive. I expected more from one who retained their reason. Apparently, your resistance to the fog is an accident. And I had hoped for… something interesting.\""},
+        {"text": "He shakes you once, short and harsh. Your head hits the plaster with a dull thud. Dirty blurs swim before your eyes."},
+        {"text": "\"I could simply break your neck,\" he pronounces, letting each word seep into your clouded consciousness. \"But I won't.\""},
+        {"text": "His grip releases. You slide down the wall to the floor, choking on convulsive, rasping coughs, clutching your numb wrist. He stands over you—monumental, indifferent, as if cast from shadow and metal."},
+        {"text": "\"Because you might still be useful to me,\" he says finally, turning towards the door. \"Unlike the others.\""},
+        {"text": "He turns and leaves. Without a backward glance, without a trace of that mocking benevolence he had at the start. Not a shred of it remains. Only icy emptiness."},
+        {"text": "You sit on the floor, rubbing your swollen neck and gently shaking your wrist, trying to dispel the numbness and pain. Then, with effort, grunting, you rise. Holding onto the wall, step by step, you regain control. Your consciousness, clouded by adrenaline and humiliation, slowly clears, as does the oxygen flow to your brain."},
+        {"text": "After a few minutes, you let go of the support. You breathe evenly. You look at the door, behind which he vanished and beyond which lies the unknown, fog-poisoned world."},
+        {"text": "You don't know what to do next. But one thing is clear: you cannot stay here."},
+        {"text": "It's time to go out and see what has become of the outside."}
+      ],
       "choices": [
-        { "label": "The End", "next": "gameExit" }
+        {
+          "label": "Continue →",
+          "next": "after_1and_2_choices"
+        }
+      ]
+    },
+    "try_to_talk": {
+      "scene_id": "try_to_talk",
+      "paragraphs": [
+        {"text": "You don't move. Your fingers still clench the knife handle convulsively, but your mind, casting aside animal terror, grasps at the only straw: he talks. He asks questions. He shows something akin to astonishment. So, dialogue is possible. So, everything can be resolved peacefully."},
+        {"text": "You force yourself to straighten up, overcoming the tremor in your knees. Your voice sounds hoarse, but steadier than you expected."},
+        {"text": "\"Maybe before asking who I am, you should introduce yourself?\" you ask, not taking your eyes off the two crimson stars in the lenses. \"And what is this 'fog' that makes everyone lose their minds, but I haven't, and you somehow haven't either—why?\""},
+        {"text": "The stranger freezes. His masked head tilts slightly, as if examining a curious insect that has unexpectedly spoken. The pause stretches agonizingly long. Finally, a strange sound comes from the speaker—something between a hiss and a short, dry chuckle."},
+        {"text": "\"Hm. I am Alaras, a simple passerby. I saw the fog in time and put on a gas mask. But you are different. You were exposed to the fog and remained conscious, and it seems the fog concentrated for several days before becoming highly noticeable. But I don't know why everyone loses their minds because of the fog.\""},
+        {"text": "He takes one unhurried step sideways, clearing a path to the door, but his posture still speaks of complete readiness for any move you might make. His movements now seem not like a threat, but like observation."},
+        {"text": "He gestures with a gloved hand towards the window."},
+        {"text": "\"I don't know why you survived. And I am interested to find out.\" Alaras turns to leave, but pauses for a moment in the doorway, a dark silhouette against the gloomy corridor, and utters words that are either hopeful or terrifying. \"I'll be keeping an eye on you. Just don't disappoint me.\""},
+        {"text": "He leaves. His footsteps, heavy and measured, quickly fade into the depths of the house. You are left alone with the ringing in your ears and his words, hanging in the air like a poisonous scent."},
+        {"text": "You can no longer stay here. The silence of the house has become louder than any noise. You pull the scarf over your face, sling your bag of meager supplies over your shoulder, and, casting one last glance at your room, step into the hallway—time to find out what's happening outside."}
+      ],
+      "choices": [
+        {
+          "label": "Continue →",
+          "next": "after_1and_2_choices"
+        }
+      ]
+    },
+    "try_to_escape": {
+      "scene_id": "try_to_escape",
+      "paragraphs": [
+        {"text": "You don't answer. Any sound, any word now would betray your own instinct, which screams one thing: RUN. Your body moves with immediate speed, in time with your frantic heart. The window is a step away to your right; without hesitation, you open the window and jump, not giving the albino time to react."},
+        {"text": "The Albino notices the movement. His masked head turns slightly, following you. \"Oh?\" his voice sounds, carrying surprise and disappointment. \"Already? But we were just getting acquainted…\""},
+        {"text": "You didn't hear those words; you were running as fast as you could, away from him."}
+      ],
+      "choices": [
+        {
+          "label": "Continue →",
+          "next": "after_3_choice"
+        }
+      ]
+    },
+    "after_1and_2_choices": {
+      "scene_id": "after_1and_2_choices",
+      "paragraphs": [
+        {"text": "The door slammed shut behind you with a dull, final thud. The air outside hit your face not with cold, but with a thick, physical heaviness. This was not ordinary fog—it was something unusual, something unseen. It hung in the air, almost motionless, with a sharp chemical smell that overpowered the familiar city scents of coal, horse sweat, and brick dust."},
+        {"text": "The silence was absolute and unnatural. No horseshoes, no cart creaks, no distant factory whistles. Only your own steps on the cobblestones, echoing dully, as if you were walking along the bottom of a dry well."},
+        {"text": "You stood on the threshold of a familiar, yet sterilized world. Across the street, the empty display window of a grocery store gaped, spilled peas and flour scattered on its counter. A little further—an overturned flower seller's cart, wilted chrysanthemums stuck to the wet stone like a funeral wreath."},
+        {"text": "But your gaze wasn't caught by these details of collapse. It was fixed on the shapes emerging through the toxic haze."},
+        {"text": "Straight ahead, in the gaps of the fog, loomed huge, distorted silhouettes. The bell tower, the sharp spire of the town hall, the massive domes of the banks. The city center. There, among the tall buildings, might be surviving institutions, hospitals, warehouses, stone fortresses that could serve as shelter. Surely, others still retaining their sanity would have tried to break through there. There, hope for order, for rescue, might still glimmer. But the path there lay along wide avenues and open squares, where you would be exposed. And if the fog drives people mad, what was happening in those stone canyons where its concentration might be highest?"}
+      ],
+      "choices": [
+        {
+          "label": "Continue →",
+          "next": "city_center"
+        }
+      ]
+    },
+    "city_center": {
+      "scene_id": "city_center",
+      "paragraphs": [
+        {"text": "The door closed behind you, and you stood on the porch of your house."},
+        {"text": "The air was cool and thick. The blue-green fog lay over the city, softening the outlines of buildings and shrouding everything in a ghostly, shimmering haze. It didn't move, but simply hung there, glowing with a steady, faint light, like a glowworm deep in the forest. The smell here, outside, wasn't as sharp as in the house. It reminded you of wet stone after a long rain, with a slight taste of metal and something tart, like roots."},
+        {"text": "You stepped down from the porch. Wet gravel crunched under your feet in your small front garden. The silence was deep, but not absolute. It was muffled, like in a library. You could hear your own footsteps, the rustle of your clothes, a distant sound of a drip falling from a roof somewhere in an alley."},
+        {"text": "You walked out onto the street. It was empty, but didn't look abandoned. As if life here had simply… paused. The windows in the houses were dark. One of the doors in the neighboring house was slightly ajar, and the same blue-green light streamed from the crack, enveloping the hallway in an unearthly glow."},
+        {"text": "You walked forward slowly. Your neighborhood had always been quiet, and now that silence had only become denser, more tangible. You reached a small square with a dried-up fountain and a wooden bench. A man sat on the bench. He sat upright, his hands on his knees, staring ahead at the empty fountain basin. He didn't move. His face was calm, his gaze unfocused, directed somewhere far away. He wasn't dead—you could see his chest slowly rising and falling. He was simply somewhere else."},
+        {"text": "You walked past, and he didn't stir."},
+        {"text": "Further on, leaning against the wall of an umbrella repair workshop, stood an elderly man in a leather apron. He was looking up, at the sky hidden by the haze, and his lips moved silently, as if he were carrying on a quiet conversation with someone."},
+        {"text": "You kept walking. There was the laundry—its shutters firmly closed. There was a small hardware shop—in the window, buckets and brushes still stood, covered in a thin layer of damp dust. On the shop's doorstep sat a woman with an empty shopping basket, staring at her shoes."},
+        {"text": "Everywhere you looked, you saw people. They weren't rushing, weren't screaming. They were motionless. Some sat on steps, others stood by their gates, still others were frozen in the middle of the sidewalk. All of them were quiet, withdrawn into themselves. They resembled dolls whose power had suddenly been cut off."},
+        {"text": "The air was cool and damp. The fog seemed to absorb all sharp sounds, making the world soft and detached. You raised your hand and ran your gloved finger along the brick wall of a house. It was damp and cold, and a faint bluish tint remained on the fingertip of your glove."},
+        {"text": "This wasn't a catastrophe, not an invasion. It was a quiet, gradual change. The city was slowly sinking into this strange, somnolent substance, and you, it seemed, were the only one in this sleep who had retained the ability to move and perceive what was happening."},
+        {"text": "You reached the end of your street, where it met a small square with a low monument. The square was filled with people. Dozens, maybe hundreds. They stood, sat on curbs, wandered slowly in circles with no apparent purpose. Here, a faint, background hum was audible—not of voices, but of whispers, the rustle of fabric, the quiet, unhurried shuffle of many feet. It was the sound of a large, living, but completely detached organism."},
+        {"text": "And there, in the center of the square, you saw the source of the most noticeable movement. It was a procession. They walked slowly, one after another, along a complex, meandering route that seemed to have neither beginning nor end. About ten people. Their faces were just as empty, but their movements had a strange, ritualistic precision. They simply walked. Past the monument, past the empty cafe, past the frozen people. Like gears in a stopped mechanism, still turning by inertia."},
+        {"text": "You stopped under an arch leading to the square and watched. It was both eerie and mesmerizing. Your entire world, familiar down to the last crack in the asphalt, was frozen in one giant, silent pause."}
+      ],
+      "choices": [
+        {
+          "label": "Continue →",
+          "next": "under_the_arch"
+        }
+      ]
+    },
+    "under_the_arch": {
+      "scene_id": "under_the_arch",
+      "paragraphs": [
+        {"text": "You froze under the arch. Conflicting impulses pulled you in different directions. The spires of the town hall in the distance beckoned with the illusion of order and answers. But your feet refused to take a step, riveted to the scene right before you."},
+        {"text": "By the wall of the tea house, frozen in an unnaturally slumped posture, was a man in a good, but thoroughly soaked coat. His face wasn't empty. It was set in a mask of quiet, crushing despair. His mouth was half-open, not for a scream, but for a silent lamentation that never came. His brows were drawn together, his eyes held deep, fathomless sorrow, as if in his last moment before stupefaction he had seen something inexpressibly terrible and hopeless. It was the face of a man who had lost everything, even the right to panic. In this despair was something universal, screaming of the scale of the catastrophe."},
+        {"text": "But your gaze was inexorably drawn downward, to his hands. The fingers of one hand convulsively gripped empty air at chest level, as if trying to hold onto or push away something invisible. His other hand hung down, and on his open fingers lay a small, carefully carved wooden horse. It lay in a puddle, its bright paint soaked, dissolving into the blue-green moisture. This tiny, pointlessly lost object, in the context of his despair, seemed particularly bitter. The story of this toy, its journey from someone's hands into this puddle, was a silent scream."},
+        {"text": "Yet, as soon as you looked away from the man and the toy, the location itself came into view. The wall he leaned against and the stones underfoot looked different. The fog's residue here was thicker and formed strange, viscous streaks, as if the wall were crying. At his feet, through the cracks in the pavement, harsh, unnaturally bright shoots of wormwood pushed through, their silvery leaves seemingly covered with the same poisonous dew. This place seemed to attract and concentrate the poison, and the man was at its epicenter."},
+        {"text": "And all the while, behind him gaped the exit from the square onto Broad Avenue—the direct path to the massive silhouettes of the center, where there might be medicine, barricades, people. Any delay here was a gamble with time, which perhaps didn't exist. But how could you turn away from this silent confession, from this cry frozen in clay features?"}
+      ],
+      "parallelGroup": "arch_scene_invistigation",
+      "choices": [
+        {
+          "id": "look_at_mans_face",
+          "type": "parallel",
+          "label": "Peer at the man's face",
+          "next": "look_at_mans_face"
+        },
+        {
+          "id": "examine_horse_and_hands",
+          "type": "parallel",
+          "label": "Examine the toy and his hands",
+          "next": "examine_horse_and_hands"
+        },
+        {
+          "id": "examine_anomalies",
+          "type": "parallel",
+          "label": "Assess environmental anomalies",
+          "next": "examine_anomalies"
+        },
+        {
+          "id": "go_to_city_center",
+          "type": "once",
+          "label": "Move on",
+          "next": "go_to_city_center"
+        }
+      ],
+      "continueAfterParallel": "go_to_city_center"
+    },
+    "look_at_mans_face": {
+      "scene_id": "look_at_mans_face",
+      "paragraphs": [
+        {"text": "You moved closer. Everything else faded into the background."},
+        {"text": "Up close, he seemed neither alive nor dead. He seemed ill. Very ill. His face was sallow and damp from the fog. His eyes were open, but his gaze was clouded, unfocused on anything, staring into the space before him. His pupils were dilated."},
+        {"text": "You leaned a little closer, peering into those eyes. And there, deep within, in the distortion of the lens, you thought you saw not your own reflection, but something else. A flicker, like a flash of green flame. Or perhaps just a trick of light in the murky moisture? But the impression was eerie—as if, at the moment of his petrification, the very source of the nightmare had imprinted itself on his eyes."},
+        {"text": "You stepped back, heart pounding wildly. It was too close. Too personal. Too human."},
+        {"text": "Your attention shifted to his mouth. His lips were slightly pulled back, baring clenched teeth. A thin trickle of saliva, mixed with whitish foam, ran from the corner of his mouth. The foam gathered in a small clump on his chin. He breathed through his mouth, slowly and hoarsely, with a barely audible gurgling in his throat."},
+        {"text": "On his forehead and temples stood clammy, cold sweat that didn't dry in the humid air. Sometimes his entire body shuddered slightly with a fine, uncontrollable tremor, like a man in a high fever."},
+        {"text": "These were not mystical signs, but familiar, frightening symptoms of severe physical illness. Intoxication, damage to the nervous system. He looked like a patient in the most critical ward of an infectious disease hospital, simply left here, on the street."},
+        {"text": "You stepped back, heart pounding wildly. It was too close. Too personal. Too human."},
+        {"text": "There were no answers on his face. Only the quiet horror of an ordinary, helpless illness, pushed to its extreme. You felt uneasy. You stepped back, wishing you could erase this too-human, too-simple suffering from your memory."}
+      ],
+      "choices": [
+        {
+          "label": "Return",
+          "next": "start"
+        }
+      ]
+    },
+    "examine_horse_and_hands": {
+      "scene_id": "examine_horse_and_hands",
+      "paragraphs": [
+        {"text": "You lower your gaze. Your attention is drawn to the small wooden horse. It lies in a puddle, its bright red paint soaking and mixing with the dirty water. You look closer."},
+        {"text": "This is no store-bought trinket. It's carved by hand; you can feel the effort, but there's no perfect symmetry—the work of a loving, but non-professional father. The horse stands on wheels, so it could be pulled by a string. One wheel is broken off, lying nearby in the crevice between the stones."},
+        {"text": "Next to the horse lie soaked papers from his open folder. You carefully nudge them aside with the tip of your boot. Under them, in a thick paper envelope, you see the edge of a postcard. You can make out a few handwritten lines, the ink smeared, but some of it is legible:"},
+        {"text": "<em>\"...don't be sad, little one. Daddy will be home soon... you'll see, I'll bring you... the promised horse. Kisses, your...\"</em>"},
+        {"text": "The rest of the text is lost in the blue-green smudges."},
+        {"text": "That's it. No mystery. He was bringing a gift to his child. Probably not living in this city. He was likely hurrying to catch a train or a stagecoach when the fog overtook him. In his final moment, losing consciousness or control of his body, he dropped this little horse, and all his business papers."},
+        {"text": "This simple, mundane tragedy resonates within you with a quiet, oppressive emptiness. Far more terrifying than any fantastical horror. He was just a man, hurrying home. And now he's here, and his child will never receive the promised gift."},
+        {"text": "You straighten up. There is nothing more for you to examine here."}
+      ],
+      "choices": [
+        {
+          "label": "Return",
+          "next": "start"
+        }
+      ]
+    },
+    "examine_anomalies": {
+      "scene_id": "examine_anomalies",
+      "paragraphs": [
+        {"text": "You deliberately look away from the sorrowful human figure and focus on the place where he ended up. You need to understand the environment, not its victim."},
+        {"text": "<strong>The Wall</strong>. The brickwork behind the man isn't just damp. There are distinct vertical streaks on it—thick, oily drips, as if condensation didn't settle, but flowed from a great height. They are darker than the surrounding fog, the color of dried pine needles. You carefully touch one of the drips with the tip of your knife. The consistency isn't watery, but sticky, like thick syrup. The knife separates from the wall with a barely audible click, leaving a dull bluish trace on the metal."},
+        {"text": "<strong>The Ground</strong>. At his feet, in the cracks between the cobblestones, it's not wormwood growing. It's an unfamiliar grass: stiff, almost black stems with tiny, thick leaves resembling scales. The leaves are covered with the same sticky gloss. You step on a stem with your boot—it doesn't snap with a crunch, but crumples with resistance, like rubber, and releases a drop of murky, milky fluid that immediately begins to slowly evaporate, leaving a sharp, medicinal smell."},
+        {"text": "This place wasn't random. It looked like a point where the fog manifested other, denser, almost physical properties. The air here was slightly thicker, and the silence even deeper, muffling even the sound of your own breath."},
+        {"text": "The examination gave no answers, but changed the nature of the fear. The threat wasn't just in the air—it was eating into the stones and sprouting from the ground."}
+      ],
+      "choices": [
+        {
+          "label": "Return",
+          "next": "start"
+        }
+      ]
+    },
+    "go_to_city_center": {
+      "scene_id": "go_to_city_center",
+      "paragraphs": [
+        {"text": "You look away, and decisively head towards the entrance to Broad Avenue—the direct path to the massive silhouettes of the center, where hope might still linger."},
+        {"text": "You tear your gaze away from the strange spot by the tea house. There's nothing to wait for here. Your goal is the tall buildings of the center, symbols of order, where there might be answers or at least safe walls."},
+        {"text": "You resolutely turn onto Broad Avenue, a wide thoroughfare leading straight to the town hall and banking districts. However, the path proves less direct than on the map. After a few hundred meters, the street is blocked by a pile-up—two collided and burnt-out cargo vans, around which, like iron filings to a magnet, dozens of the 'lost' are drawn. They stand motionless by the smoldering wrecks, faces turned to the black smoke, as if it held the final secret of the world."},
+        {"text": "Pushing through this crowd would mean attracting attention and possibly provoking an unknown reaction. A detour to the left leads into a dark, narrow alley from which an especially strong, sweet bitterness emanates. To the right is a slightly wider passage, clearly leading towards the Old Town, where the covered market square is located. From there, you recall, there are several passages to the back courtyards of the administrative buildings."},
+        {"text": "Risking pushing through a clearly anomalous gathering of people by the fire seems insane. The alley on the left is frightening with its concentrated stench. The market, despite its openness, seems the least mysterious and most predictable path—a familiar space where you can find your bearings."},
+        {"text": "You're not in the habit of playing with fire, so the choice is obvious—you choose the market."},
+        {"text": "You turn right, and a few minutes later the arched entrance to the Old Market Square gapes before you, like an entrance to another world. From here, only part of the space is visible, filled with the moving shadows of the 'lost'. The air hums with their aimless shuffling. This is not the silence of the central streets. It's a place where halted life continues to stir in a trance."},
+        {"text": "You freeze at the entrance, assessing the situation. There are many 'lost' on the square. But they are scattered, moving slowly. Here, it seems, you can pass through, if you are careful and don't draw attention. Your goal is the arch on the opposite side, leading to the administrative quarters."},
+        {"text": "Taking a deep breath and pulling your scarf over your face, you step under the market's vaults."}
+      ],
+      "choices": [
+        {
+          "label": "Go through the market",
+          "next": "go_to_market"
+        }
+      ]
+    },
+    "after_3_choice": {
+      "scene_id": "after_3_choice",
+      "paragraphs": [
+        {"text": "You don't remember how you ended up in this alley. You ran until your lungs gave out, until fear was replaced by an icy, silent emptiness. Now you stand, leaning against a cold brick wall, trying to figure out where your legs have led you."},
+        {"text": "The air here is thicker. The fog doesn't just hang—it spreads along the ground, filling the courtyard wells with motionless blue-green puddles. The silence isn't absolute. It's broken by a barely perceptible sound—like a quiet, rhythmic creaking. As if someone behind the wall is slowly, methodically rocking an old rusty rocking chair."},
+        {"text": "You cautiously creep along the wall, trying not to step into the glowing fog accumulations. On the dirty glass of the nearest window, you see the reflection of your face. The features are still as alien, but something new has appeared in your eyes—not just fear, but the wariness of a cornered predator."},
+        {"text": "The alley forks."},
+        {"text": "To the right, it leads to something resembling a small square or market. Through the haze, you can see the silhouettes of awnings and stalls. There might be food, tools, shelter. But there, among the shadows, you catch movement. Slow, languid. Not one. Several figures wander between the stalls, colliding with each other silently, like mannequins. Among them, something flashes—faster, low to the ground—and you hear a quiet, raspy sound, like a cough."},
+        {"text": "To the left, the alley narrows into a gap between two high factory buildings. Almost total darkness reigns there, which even the fog can't fully fill. From that side comes that same creaking, a little louder. And another sound—thin, intermittent. Either the cry of a child, or the mewing of a cat caught in a trap. This sound seems unnaturally pure against the backdrop of dead silence."},
+        {"text": "You freeze. The handle of the kitchen knife presses roughly into your pocket. The bag of supplies feels ridiculously light. Your heart beats dull thuds against your ribs. You are alone, you have already been found once, and you ran. Now you need to decide where to go."},
+        {"text": "1. Go through the market. Try to sneak through quietly, using the stalls as cover. Maybe find something useful and understand what these 'lost' are and what those quick shadows scurrying among them might be."},
+        {"text": "2. Investigate the dark passage. Find out who or what is making those sounds. Risk entering the darkest place, where the fog thickens into an impenetrable wall, and the creaking and crying promise either a deadly trap or someone else's desperate attempt to survive, just like yours."}
+      ],
+      "choices": [
+        {
+          "id": "go_to_alley",
+          "type": "once",
+          "label": "Enter the dark alley",
+          "next": "go_to_alley"
+        },
+        {
+          "id": "go_to_market",
+          "type": "once",
+          "label": "Go through the market",
+          "next": "go_to_market"
+        }
+      ]
+    },
+    "go_to_alley": {
+      "scene_id": "go_to_alley",
+      "paragraphs": [
+        {"text": "The darkness in the gap between the factory walls is not merely an absence of light. It's a physical sensation of cold, dampness, and confined space. Bricks, covered in sticky slime, catch on the sleeves of your sweater. The creaking grows louder, takes on a metallic, piercing tone, but its source remains invisible. The crying—whether child or animal—sounds now closer, now farther, echoing off the walls, disorienting you."},
+        {"text": "You move, holding the knife out in front of you, each step an ordeal. The fog here is thick as jelly. It clings to your eyes, gets under your scarf, and its sweet-bitter taste becomes unbearable."},
+        {"text": "Suddenly, the creaking stops. A dead silence falls, in which only the beating of your heart is audible."},
+        {"text": "And then the crying sounds right above your head."},
+        {"text": "You jerk your gaze upward. On a ledge, ten feet off the ground, sits a cat. Or rather, what's left of it. Its fur is matted and glows with the same blue-green shimmer as the fog. It looks at you not with eyes, but with two empty, dark hollows. From its open mouth issues that same thin, piercing sound, like crying. This was no living creature. It was a doll of fur and decay, from which the fog extracted a plaintive sound, like from a badly tuned musical instrument."},
+        {"text": "From horror and disgust, you take a step back. Your heel slips on the wet stone. You fall, hitting your back against the wall, and look up. The cat doesn't move. It just keeps 'crying', staring into nothing."},
+        {"text": "You get up, brushing yourself off, and realize—there's no way forward. The gap is blocked by collapsed bricks and rusty factory reinforcement. A dead end. The sounds that lured you here were merely a mirage, an acoustic trap in this cursed fog. A torment to the ears."},
+        {"text": "You were deceived. Not by a man, not by a monster—this insane, poisonous reality itself played a cruel trick on you. A mute fury rises in your throat, mingling with fear. You're trapped, you've wasted time and energy, and now you stand with your back to the blockage, facing the only exit from the gap—back the way you came."}
+      ],
+      "choices": [
+        {
+          "id": "go_to_market",
+          "type": "once",
+          "label": "Go through the market",
+          "next": "go_to_market"
+        }
+      ]
+    },
+    "go_to_market": {
+      "scene_id": "go_to_market",
+      "paragraphs": [
+        {"text": "You approach the edge of the square, hiding behind the corner of a broken drainpipe. The market presents a surreal picture of collapse. Stalls are overturned, goods—rotting vegetables, broken pots, unrolled bolts of fabric—are scattered everywhere. And everywhere, like silent ghosts, they wander."},
+        {"text": "There are many of them. Men, women, even a child of seven or eight. All move with the same frightening slowness. Their steps are shuffling, uncertain. Their arms hang like whips or make aimless, smooth movements, as if they are swimming in thick syrup. Faces are almost indistinguishable—they are lowered or turned towards the poisonous sky. The fog swirls around them more thickly, as if they themselves are its sources."},
+        {"text": "<strong>And then you notice the others</strong>. Their appearance isn't dramatic, but that only makes it eerier. They don't emerge from alleys—they manifest from the fog itself, like clots of denser, living gloom. One was there where a second ago was just empty haze—low, hunched, limbs twitching in a convulsive, inhuman rhythm. Their movements are not walking. They are jerks. Sharp, spasmodic, twisted, as if their bones forgot how to hold the body. They dart among the lost, flowing around them like water around stones, sometimes stopping to thrust a faceless head at a motionless hand or leg. From their bodies comes only a wet, raspy sound, like gurgling."},
+        {"text": "You see one of the 'shadows'—a quick, hunched creature with an unnatural gait—approach a woman standing motionless. It doesn't attack. It thrusts its muzzle at her hand, sniffs, emits a raspy, gurgling sound, and then crawls away, seemingly disappointed. The 'lost' one doesn't even flinch."},
+        {"text": "<em>They don't react. They are just objects in this fog.</em>"},
+        {"text": "This realization brings an icy calm. There is no direct danger from them. The danger is the others. The 'Shadows'. There are few of them, but they move with monstrous, twisted speed. They investigate, sniff, search for something among the lost. Are they searching, like you, for those still conscious?"},
+        {"text": "Your goal is to cross the square diagonally, towards the arch on the opposite side leading to a wider street. You could go straight, pushing past the 'lost' like bags of sawdust. But that would attract the attention of the 'shadows'. You could try to go around, creeping along the walls where it's darker."},
+        {"text": "You take a deep breath, pull your scarf over your face, and choose the path closer to the walls, in the shadow of the awnings. You move slowly, trying to blend into the semi-darkness."},
+        {"text": "The first few meters are easy. You barely breathe, crawling under a broken table. One of the 'shadows' darts within a couple of steps of you, but its attention is fixed on a group of motionless figures in the center of the square. You freeze, and it slips past."},
+        {"text": "And now you're halfway there. The arch is so close. But right in your path, under the very awning, stands a group of three 'lost'. They completely block the narrow passage between the wall and a load of empty crates. The only way around them is to move into the open space, where the 'shadows' will immediately spot you."},
+        {"text": "You press yourself against the bricks, assessing the situation."}
+      ],
+      "choices": [
+        {
+          "type": "once",
+          "label": "Wait",
+          "next": "wait"
+        },
+        {
+          "type": "once",
+          "label": "Move forward",
+          "next": "move_forward_in_market"
+        }
+      ]
+    },
+    "wait": {
+      "scene_id": "wait",
+      "paragraphs": [
+        {"text": "Patience. It's all you have now. You freeze in the shadows, pressing your back against the cold brickwork, and just watch."},
+        {"text": "A minute. Another. Time loses meaning; it stretches and compresses, measured only by heartbeats and the slow, billowing movement of the fog. You watch the 'lost' in your dead end perform their meaningless micro-movements. One sways slightly. Another slowly, as if underwater, turns their head ten degrees to the left, then back. A third just stands."},
+        {"text": "Not one of them takes a step that would clear your path."},
+        {"text": "Meanwhile, the square continues its silent ballet. The 'Shadows' slip between the motionless figures, sometimes pausing, sometimes emitting their raspy sound. One of them, the one that flashed past you earlier, returns. It stops five steps from your hiding place and begins to slowly, methodically sniff the air, turning its shapeless head from side to side. It is clearly searching for something. Searching for something that doesn't smell of fog and submission."},
+        {"text": "Cold sweat trickles down your spine. You realize you can wait no longer. Every second of this stillness makes you a target. Passivity has become more dangerous than action."},
+        {"text": "You straighten up and prepare to move."}
+      ],
+      "choices": [
+        {
+          "label": "Move forward",
+          "next": "move_forward_in_market"
+        }
+      ]
+    },
+    "move_forward_in_market": {
+      "scene_id": "move_forward_in_market",
+      "paragraphs": [
+        {"text": "The decision seems the only correct one. You step back from the wall, take a deep breath, pull your scarf over your face, and step out of the shadow of the awning into the open space of the square."},
+        {"text": "The first steps are difficult—every movement seems too loud in this deathly silence. You walk quickly, but don't run, trying not to attract attention, gliding between the motionless or slowly wandering figures of the 'lost'. Your gaze is fixed on the arch on the opposite side. It seems a little more, and you'll be safe."},
+        {"text": "A minute passes relatively calmly. You're almost halfway there. The 'lost' pay you no attention."},
+        {"text": "It is at this moment you realize you were watching the wrong threat."},
+        {"text": "One of the 'Shadows'—the one that was closer to the center—suddenly stops moving. It just freezes. And then, slowly, like an owl turning its head, this shapeless top turns in your direction."},
+        {"text": "It doesn't growl. Doesn't hiss. It just starts walking. Not running, but its steps—or rather, smooth, gliding motions—leave no doubt. It is heading towards you."},
+        {"text": "Panic hammers at your temples. You break into a run, dashing towards the arch with all your might, no longer trying to hide."},
+        {"text": "You don't look at your feet. You look at that creature, which has now accelerated, its body wavering, preparing to pounce. And you trip."},
+        {"text": "Your boot catches on the body of a 'lost' lying on the ground. You pitch forward, sprawling onto the wet cobblestones. You try to get up, to roll onto your back."},
+        {"text": "And you see it above you."},
+        {"text": "It looms, filling your entire field of vision. Its formless shape lacks clear contours; it resembles a ball of black, living smoke with a hole in the middle—that same silent maw."},
+        {"text": "No thoughts. Only pure, animal terror and one clear feeling—you do not want to die."},
+        {"text": "You tuck your head into your shoulders and close your eyes, raising your hands in an instinctive reaction to protect your head."},
+        {"text": "You wait. \nWait for the strike. \nAnd wait. \nAnd wait. \nA second passes. Another. A third. \nSilence."},
+        {"text": "You hear only the pounding of your frantic heart."},
+        {"text": "Slowly, not believing it, you open your eyes."},
+        {"text": "You are lying on your back. Above you—only the blue-green fog, swirling under the low sky. Nothing else. No 'Shadows'."},
+        {"text": "They vanished. As if they were never there."},
+        {"text": "You lie there, paralyzed by incomprehension. What just happened? It was above you. It should have killed you."},
+        {"text": "Struggling to your feet, you look around. Nothing. The 'lost' wander on as if nothing happened."},
+        {"text": "You stand up, and staggering, almost falling, you make it to the arch. You rush under the dark vault and stop, leaning against the cold stone to catch your breath."},
+        {"text": "You are alive. For some unknown reason. But alive. And now before you lies a new labyrinth of streets, and in it, anything could be waiting."}
+      ],
+      "choices": [
+        {
+          "label": "Continue →",
+          "next": "stranger_in_the_darkness"
+        }
+      ]
+    },
+    "stranger_in_the_darkness": {
+      "scene_id": "stranger_in_the_darkness",
+      "paragraphs": [
+        {"text": "You stood under the arch, pressed against the cold stone, trying to understand what had just happened. The creature was above you. You felt the icy cold emanating from it. And then... nothing. It simply dissolved into the fog, as if it had never been there."},
+        {"text": "It made no sense. But there was no time to ponder. You were on the street, and that was already progress."},
+        {"text": "The alley you had run into was narrow and crooked. The high brick walls of warehouses and cheap tenement houses almost met overhead, turning day into perpetual twilight. The fog here was thicker, viscous and motionless. Without the 'Shadows', this silence was even eerier. Each of your steps echoed hollowly."},
+        {"text": "You walked, hugging the walls, not knowing where to go. Just forward, away from the market. After a few turns, the alley ended at a fork."},
+        {"text": "The left branch continued as the same dark crevice, leading deeper into the working-class quarters. From there came only the whistle of wind through broken windows. The right branch opened onto a slightly wider street, and in the distance, the silhouette of a tall, pointed tower was faintly visible. The bell tower of the city cathedral. The center."},
+        {"text": "You didn't hesitate. Dark alleys had already given you enough 'surprises'. You turned right, towards the silhouette of the tower."},
+        {"text": "The wider street was no less deserted, but here there were signs of more widespread panic. An overturned carriage with a smashed roof blocked part of the road. Papers spilled from the carriage's broken window, slowly soaking in the fog. You were creeping along the walls when your gaze fell upon the display window of a small pharmacy."},
+        {"text": "The glass was broken, but inside, on the shelves, rows of vials, jars, and boxes were still visible. Medicine. Bandages. Antiseptic. In a world where the very air could be poison, this was treasure."},
+        {"text": "Carefully stepping over the shards, you entered. The smell of herbs, alcohol, and something chemical, sharp, hit your nose, momentarily overpowering the sweetish stench of the fog. You began quickly sweeping everything that seemed useful into your bag: iodine in dark bottles, bandages, plaster, small scissors. Your hand reached for a neat little box labeled \"Sleeping pills. Caution.\" You hesitated. On one hand—a dangerous substance. On the other... in a world where sleep might have become the only refuge, this could be a weapon. You put the box in your pocket."},
+        {"text": "Suddenly, a sound came from the street."},
+        {"text": "Not a gurgle or rustle. A sharp, metallic sound. As if iron was struck once, hard and ringing."},
+        {"text": "You froze by the display, crouching down. Through the broken glass, you saw movement on the other side of the street. A figure emerged from around a corner. Not a 'Shadow'. A person. Tall, in a long, worn coat, a bag slung over their shoulder. In their hand was a staff with a metal pommel, which they had just used to strike a drainpipe grate, as if signaling. But to whom?"},
+        {"text": "They stopped in the middle of the street, slowly turning their head. Their gaze swept over the broken windows, the overturned carriage... and stopped on you. On your figure, frozen in the pharmacy's display window."},
+        {"text": "From under the hood, pulled low over their brow, no face was visible. But you felt the weight of that gaze upon you. They didn't look lost. They looked composed. Dangerous."},
+        {"text": "They didn't move from the spot. They just stood and watched. As if deciding what to do with this sudden discovery."}
+      ],
+      "choices": [
+        {
+          "label": "Continue →",
+          "next": "stranger_approaches"
+        }
+      ]
+    },
+    "stranger_approaches": {
+      "scene_id": "stranger_approaches",
+      "paragraphs": [
+        {"text": "He didn't move from the spot. He didn't shout, didn't beckon. He just stood and watched, and that was more frightening than any threat. His stillness was unnatural, almost sinister against the backdrop of general stagnation."},
+        {"text": "Instinct screamed to run, but reason understood—there was nowhere to run. The pharmacy had only one exit—onto that very street where he stood. You froze, trying to become part of the shadow and dust, but his gaze seemed to burn right through you."},
+        {"text": "Finally, he moved. Not stepping towards you. Slowly, with seeming nonchalance, he lowered the end of the staff to the cobblestone and began to trace something on the wet stone. Metal scraped against stone with a quiet, hissing sound. He was writing. Or drawing."},
+        {"text": "Then he raised his head, looked once more in your direction, and, unhurriedly, turned. His cloak billowed, and he walked away, disappearing towards the distant bell tower. His steps were measured and silent until he dissolved into the fog, like a ghost."},
+        {"text": "You waited a long minute longer, afraid it was a trap. But the street was empty. Your heart was still racing as you cautiously emerged from the pharmacy onto the pavement."},
+        {"text": "There, where he had stood, a simple, angular sign was scratched onto the stone. Not a letter. More like a symbol, resembling an eye or a keyhole. Next to it, an arrow pointing towards where he had gone—towards the center, towards the cathedral."},
+        {"text": "He hadn't spoken a word. But the message was clear. Follow."},
+        {"text": "You stood over this sign, feeling the cold from the wet stone seep through the soles of your boots. Ignore the sign? Go your own way into the dark alleys, where one formless creature had already lain in wait? Or take the risk and follow the only sane person you've encountered, even if that sanity seemed dangerous and inscrutable?"},
+        {"text": "You had no good options. Only a choice between different kinds of darkness. You scuffed the sign away with your foot, pretending you hadn't seen it, and decided to move along a parallel route, staying in the shadows, but keeping the same goal—the tall tower, which now loomed in the fog not as hope, but as a new enigma."}
+      ],
+      "choices": [
+        {
+          "id": "follow_stranger",
+          "type": "once",
+          "label": "Follow the stranger",
+          "next": "follow_stranger"
+        },
+        {
+          "id": "ignore_him",
+          "type": "once",
+          "label": "Ignore him and turn into the dark alley.",
+          "next": "go_to_the_dark_alley"
+        }
+      ]
+    },
+    "follow_stranger": {
+      "scene_id": "follow_stranger",
+      "paragraphs": [
+        {"text": "You made your choice, almost without thinking. The thought of being utterly alone again among the mute streets and formless horrors was unbearable. You slipped out of the pharmacy and rushed into the fog, towards where the stranger had pointed."},
+        {"text": "Catching up to him proved difficult. He moved unhurriedly, but constantly, never stopping, never looking back, as if guided by an invisible thread. You kept a respectful distance, hiding behind corners and wreckage. The city around you was changing, becoming more monumental and deserted. Finally, in a break in the fog, the goal appeared—the huge, dark silhouette of the city cathedral."},
+        {"text": "The stranger approached the massive oak doors, open just a crack. He paused for a moment, then stepped inside and dissolved into the blackness."},
+        {"text": "You ran to the doors after him, your heart pounding with a mix of fear and hope. The heavy door yielded with a quiet creak, and you stepped into absolute darkness."},
+        {"text": "The air inside was stale, smelling of old stone, dust, and that same sweet-bitter fog, but here the smell was muffled, as if absorbed by the ancient walls. You froze, peering into the darkness. Your eyes slowly adjusted. The vast nave of the cathedral was plunged into gloom. Long rows of empty pews stretched into the distance. Somewhere ahead, near the altar, a solitary red light glowed faintly—embers in a brazier or a dying candle. But the stranger was nowhere to be seen. He had vanished, as if he had never been."},
+        {"text": "Hey?—you called out quietly, and your voice was swallowed by the acoustics of the great hall, not even an echo returning. Only silence answered."},
+        {"text": "You cautiously moved forward, holding onto the backs of the pews. You needed light. In a side chapel, you stumbled upon a small table where, presumably, candles and souvenirs were once sold. Everything was scattered and knocked over, but in the corner, under some rags, your hand touched cold metal and glass. A lantern. Old, with a misted glass. You opened the door—there was still a candle inside."},
+        {"text": "Matches were found right there, in a crushed box. The first one failed. The second flared up, and you lit the wick. Yellow, uneven light snatched the nearest pews from the darkness, the stone floor covered in dust and leaves that had blown in who knows when."},
+        {"text": "With this light, it became a little easier. You raised the lantern higher, illuminating the space. The cathedral was empty. Or almost empty. No sign of the stranger, no other people, none of those strange bowls of fog you had feared to see. Only the Gothic vaults, soaring upward into the impenetrable darkness beyond the lantern's reach."},
+        {"text": "Exhaustion, which you hadn't noticed in the heat of flight and fear, washed over you like a wave. Your legs gave way. You sank onto a cold stone step by the wall, setting the lantern beside you. Its light created a small, trembling island of safety in the sea of gloom."},
+        {"text": "It didn't smell of fog here. It smelled of the world, albeit dead, forgotten. The walls were thick, the door was heavy. For one night, for a few hours... this could be a refuge."},
+        {"text": "You took off your bag, set it beside you, placed the dull kitchen knife on your knees. The lantern flickered, casting giant, dancing shadows on the walls. You sat, listening to the silence, and for the first time in this endless day, you allowed yourself to simply <strong>be</strong>. Not to run, not to fear, not to decide. Just to sit in the lantern light, in the heart of the ancient cathedral, at the epicenter of a city gripped by madness, and try to understand who you are now and what tomorrow will bring."},
+        {"text": "<strong>End of Act One.</strong>"}
+      ],
+      "choices": [
+        {
+          "label": "End"
+        }
+      ]
+    },
+    "go_to_the_dark_alley": {
+      "scene_id": "go_to_the_dark_alley",
+      "paragraphs": [
+        {"text": "Trust a ghost that emerged from the fog without a single word? No. That gesture, that pointing finger—it smacked of the same inhuman theatricality as everything else in this new world. You turned sharply away from the pharmacy and stepped in the opposite direction, into the maw of the darkest alley."},
+        {"text": "Here, the fog thickened to the consistency of milk. You walked almost by touch, your palm sliding along the rough, damp brick. The sounds of the city did not reach here. Only your breathing and the occasional screech of a rusty sign overhead. You delved deeper into the labyrinth of backyards, courtyard wells, and the blind walls of workshops. There were no 'lost' here, no 'shadows'. Only oblivion."},
+        {"text": "Your gaze caught the silhouette of a low, squat house through the haze. It stood apart at the end of a dead-end passage, separated from its neighbors by a narrow, weed-choked front garden. The windows were dark, the door—closed but not locked. You pushed it open with your shoulder. A creak, and you were inside."},
+        {"text": "The smell of mustiness, dust, and old wood. But not the fog. The air was still, untouched. You looked around quickly: a tiny entryway, a room with a collapsed bed, a kitchen with a cold stove. Nothing extra. No signs of recent life. This place had been abandoned long ago, before the catastrophe. It was perfect."},
+        {"text": "In the kitchen, in a table drawer among rusty nails and scraps of rope, you found what you were looking for. A lantern. Old, worn, but intact. Nearby stood a half-full canister of a pungent-smelling liquid. Your hands, accustomed to trembling, poured the fuel, struck a match. Yellow, uneven, but bright light flared up, flooding the tiny kitchen, casting your giant shadow on the ceiling."},
+        {"text": "You carried the lantern into the room and set it on the floor. Its light pushed the darkness into the corners, made the space familiar, almost your own. You slid the bolt on the door shut, pushed a heavy chest of drawers against it for good measure."},
+        {"text": "And only then did you allow yourself to collapse onto the bare floorboards, your back against the wall. The bag of supplies, the knife—everything was within reach. The lantern crackled, filling the room with warm, living light and a soft hum. Outside the window, in the dead-end alley, reigned absolute, dead silence. No footsteps, no rustles. Nothing."},
+        {"text": "You sat in your tiny kingdom, wrested from madness—four walls, a roof over your head, and an island of light in the impenetrable dark. The fear hadn't disappeared. It had quieted, slunk back into the shadows, lying in wait to return with the dawn. But for now, for a few hours, you had a truce. You could close your eyes. Not to die, but to gather strength. To decide tomorrow what to do next in this new, silent, and poisonous world."},
+        {"text": "<strong>End of Act One.</strong>"}
+      ],
+      "choices": [
+        {
+          "label": "End"
+        }
       ]
     }
   }

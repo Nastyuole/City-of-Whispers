@@ -57,3 +57,44 @@ document.addEventListener('fullscreenchange', () => {
     iframe.style.display = 'none';
   }
 });
+
+// Handle close game frame message from iframe
+window.addEventListener('message', (event) => {
+  if (event.data.type === 'closeGameFrame') {
+    iframe.style.display = 'none';
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
+  }
+});
+
+const cards = document.querySelectorAll('.character-card');
+
+const observer = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.2 }
+);
+
+cards.forEach(card => observer.observe(card));
+
+// Observer for description paragraphs
+const descriptionObserver = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  },
+  { threshold: 0.3 }
+);
+
+const descriptionParagraphs = document.querySelectorAll('.description-paragraph');
+descriptionParagraphs.forEach(paragraph => descriptionObserver.observe(paragraph));

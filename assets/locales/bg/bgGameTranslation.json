@@ -1,4 +1,19 @@
 {
+  "ui": {
+    "explored": "Изследвано: {0}/{1}",
+    "continue": "Продължи →",
+    "newGame": "Нова игра",
+    "continueGame": "Продължи",
+    "loadGame": "Зареди игра",
+    "settings": "Настройки",
+    "exit": "Изход",
+    "loadHeader": "Зареди игра",
+    "settingsHeader": "Настройки",
+    "back": "Назад",
+    "saveSlot": "Слот за запис {0}",
+    "empty": "Празно",
+    "end": "Край"
+  },
   "scenes": {
     "start": {
       "text": "Събуждаш се в тъмна стая.",

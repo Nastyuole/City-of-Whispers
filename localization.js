@@ -25,7 +25,7 @@ async function loadLanguage(lang) {
       // Support nested keys like 'header.title' or flat keys like 'title'
       const value = getNestedValue(translations, key);
       if (value) {
-        el.textContent = value;
+        el.innerHTML = value;
       }
     });
   } catch (err) {
@@ -41,19 +41,19 @@ function dispatchLanguageChange(lang) {
     iframe.contentWindow.dispatchEvent(event);
   }
 }
-document.getElementById('ru').addEventListener('click', () => {
+document.getElementById('ru')?.addEventListener('click', () => {
   saveLang('ru');
   loadLanguage('ru');
   dispatchLanguageChange('ru');
 });
 
-document.getElementById('en').addEventListener('click', () => {
+document.getElementById('en')?.addEventListener('click', () => {
   saveLang('en');
   loadLanguage('en');
  dispatchLanguageChange('en');
 });
 
-document.getElementById('bg').addEventListener('click', () => {
+document.getElementById('bg')?.addEventListener('click', () => {
   saveLang('bg');
   loadLanguage('bg');
   dispatchLanguageChange('bg');

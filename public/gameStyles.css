@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+:root {
+    --game-font-size: 18px;
+}
+
 body {
     background: #0c0c0c;
     color: #dfd8d8;
@@ -18,18 +22,27 @@ body {
 
 /* Container */
 #game {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.7);
+   position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  z-index: 2;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 0.6s ease;
 }
 
+
 #dialog-box {
-    width: 100%;
+    width: auto;              
     max-width: 800px;
     height: 90vh;
+    margin: 0 auto; 
     background: rgba(20, 20, 30, 0.95);
     border: 1px solid #333;
     border-radius: 10px;
@@ -41,6 +54,7 @@ body {
         inset 0 0 20px rgba(0, 0, 0, 0.5);
     position: relative;
     overflow: hidden;
+    
 }
 
 /* Line above for styling */
@@ -62,7 +76,7 @@ body {
 #dialog-text {
     flex-grow: 1;
     overflow-y: auto;
-    font-size: 18px;
+    font-size: var(--game-font-size);
     padding: 20px;
     margin-bottom: 30px;
     background: rgba(10, 10, 15, 0.5);
@@ -75,6 +89,7 @@ body {
     max-height: 65vh;
     scrollbar-width: thin;
     scrollbar-color: #444 #222;
+    
 }
 
 /* Sctollbar styling */
@@ -201,18 +216,6 @@ body {
     animation: fadeIn 0.8s ease-out;
 }
 
-/* paragraph-level helpers for game text */
-.italic {
-    font-style: italic;
-}
-
-/* compact paragraph: preserve newlines inside a single <p> while keeping it visually compact */
-.compact {
-    white-space: pre-line; /* honor \n as line breaks inside the paragraph */
-    line-height: 1.45;
-    margin-bottom: 0.75em;
-}
-
 /* Adaptive styles */
 @media (max-width: 768px) {
     #game {
@@ -302,4 +305,555 @@ body {
 
 .choice-btn:not(.choice-viewed) {
     animation: pulseNew 2s infinite;
+}
+
+/* Title Screen & Menu Styles */
+
+.title-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: #000;
+}
+
+.title-background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.menu-overlay {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    text-align: center;
+    background: rgba(20, 20, 20, 0.9);
+    padding: 60px 80px;
+    border: 3px solid #8b7355;
+    border-radius: 10px;
+    width: 350px;
+}
+
+
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.menu-button {
+    padding: 18px 40px;
+    font-size: 20px;
+    font-family: 'EB Garamond', serif;
+    background: #8b7355;
+    color: #fff;
+    border: 2px solid #a89968;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Ensure menu button text is centered */
+.menu-container .menu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Center language buttons in title settings */
+.settings-container .flex-gap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Language buttons (title + in-game) */
+.lang-btn, .lang-btn-game {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 36px;
+    padding: 6px 8px;
+    text-align: center;
+    font-weight: 600;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.06);
+    color: inherit;
+    cursor: pointer;
+    border-radius: 6px;
+}
+.lang-btn.active, .lang-btn-game.active {
+    background: rgba(255,255,255,0.06);
+}
+
+.menu-button:hover {
+    background: #a89968;
+    border-color: #d4af37;
+    color: #d4af37;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(212, 175, 55, 0.3);
+}
+
+.title-screen.hidden {
+    display: none;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.video-screen {
+     position: fixed;
+    inset: 0;
+    z-index: 3;
+    background: black;
+}
+
+.video-screen video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Settings Container */
+.settings-container {
+    display: none;
+}
+
+.settings-container.active {
+    display: block;
+}
+
+/* Delete slot button styles */
+.load-slot-row, .save-slot-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.delete-slot-btn, .delete-slot-btn-in-game {
+    background: transparent;
+    border: none;
+    padding: 6px;
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.9;
+}
+.delete-slot-btn:hover, .delete-slot-btn-in-game:hover {
+    transform: scale(1.05);
+    opacity: 1;
+}
+.delete-slot-btn img, .delete-slot-btn-in-game img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Reduce button visual weight on small screens */
+@media (max-width: 480px) {
+    .delete-slot-btn, .delete-slot-btn-in-game { width: 28px; height: 28px; padding: 4px; }
+    .delete-slot-btn img, .delete-slot-btn-in-game img { width: 18px; height: 18px; }
+}
+
+/* Confirm modal styles */
+.confirm-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+.confirm-modal {
+    background: #121212;
+    color: #eee;
+    padding: 20px;
+    border-radius: 8px;
+    width: 320px;
+    max-width: calc(100% - 40px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    border: 1px solid #333;
+}
+.confirm-modal .confirm-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 16px;
+}
+.confirm-modal button {
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.confirm-yes { background: #c0392b; color: white; border: none; }
+.confirm-no { background: transparent; color: #ddd; border: 1px solid #444; }
+
+.settings-group {
+    margin-bottom: 20px;
+}
+
+.lang-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'EB Garamond', serif;
+    background: #5a5a5a;
+    color: #fff;
+    border: 2px solid #7a7a7a;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.lang-btn:hover {
+    background: #7a7a7a;
+    border-color: #9a9a9a;
+}
+
+.lang-btn.active {
+    background: #a89968;
+    border-color: #c4b896;
+}
+
+#menu-container.hidden {
+    display: none;
+}
+
+/* Load Game Container */
+.load-game-container {
+    display: none;
+    color: #dfd8d8;
+}
+
+.load-game-container.active {
+    display: block;
+}
+
+.load-game-container h2 {
+    font-size: 24px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    margin-bottom: 30px;
+    text-align: left;
+    color: #dfd8d8;
+}
+
+.load-game-slots {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.load-game-slot-btn {
+    width: 100%;
+    padding: 15px;
+    background: rgba(88, 88, 88, 0.6);
+    border: 1px solid #7a7a7a;
+    color: #dfd8d8;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 14px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.load-game-slot-btn:hover {
+    background: rgba(122, 122, 122, 0.8);
+    border-color: #9a9a9a;
+    transform: translateX(5px);
+}
+
+.slot-title {
+    font-weight: bold;
+    color: #a89968;
+    font-size: 13px;
+}
+
+.slot-info {
+    font-size: 12px;
+    color: #b8b0a8;
+}
+
+/* Game Menu Button (Top Left) */
+.game-menu-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    background: transparent;
+    border: 2px solid #7a7a7a;
+    color: #dfd8d8;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.game-menu-btn:hover {
+    background: rgba(122, 122, 122, 0.5);
+    border-color: #9a9a9a;
+    transform: scale(1.05);
+}
+
+/* Game Menu Panel */
+.game-menu-panel {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    z-index: 99;
+    background: rgba(20, 20, 30, 0.95);
+    border: 2px solid #8b7355;
+    border-radius: 8px;
+    padding: 20px;
+    width: 350px;
+    max-height: 70vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+}
+
+.game-menu-panel.hidden {
+    display: none;
+}
+
+.game-menu-content {
+    color: #dfd8d8;
+}
+
+.game-menu-content h2 {
+    font-size: 20px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.game-menu-section {
+    margin-bottom: 20px;
+}
+
+.game-menu-option {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(88, 88, 88, 0.6);
+    border: 2px solid #7a7a7a;
+    color: #dfd8d8;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.game-menu-option:hover {
+    background: rgba(122, 122, 122, 0.8);
+    border-color: #9a9a9a;
+}
+
+.game-menu-option svg {
+    flex-shrink: 0;
+}
+
+/* Save Containers */
+.save-containers {
+    margin-top: 12px;
+    padding: 12px;
+    background: rgba(50, 50, 60, 0.9);
+    border: 1px solid #6a7a7a;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.save-containers.hidden {
+    display: none;
+}
+
+.save-slot {
+    display: flex;
+    flex-direction: column;
+}
+
+.save-slot-btn, .load-slot-btn {
+    width: 100%;
+    padding: 10px;
+    background: rgba(88, 88, 88, 0.6);
+    border: 1px solid #7a7a7a;
+    color: #dfd8d8;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 13px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.save-slot-btn:hover .load-slot-btn:hover{
+    background: rgba(122, 122, 122, 0.8);
+    border-color: #9a9a9a;
+}
+
+.save-slot-title {
+    font-weight: bold;
+    color: #a89968;
+    font-size: 12px;
+}
+
+.save-slot-info {
+    font-size: 11px;
+    color: #b8b0a8;
+}
+
+/* Game Settings Panel */
+.game-settings-panel {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(50, 50, 60, 0.8);
+    border: 1px solid #6a7a7a;
+    border-radius: 6px;
+}
+
+.game-settings-panel.hidden {
+    display: none;
+}
+
+.game-settings-panel h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #dfd8d8;
+}
+
+.settings-group-game {
+    margin-bottom: 15px;
+}
+
+.settings-group-game label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #dfd8d8;
+}
+
+.lang-buttons-game {
+    display: flex;
+    gap: 8px;
+}
+
+.lang-btn-game {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 12px;
+    background: #5a5a5a;
+    color: #fff;
+    border: 2px solid #7a7a7a;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.lang-btn-game:hover {
+    background: #7a7a7a;
+}
+
+.lang-btn-game.active {
+    background: #a89968;
+    border-color: #c4b896;
+}
+
+#font-size-slider-game {
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+#font-size-value-game {
+    display: block;
+    font-size: 12px;
+    color: #b8b0a8;
+}
+
+/* Menu Buttons */
+.menu-button-small {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #5a5a5a;
+    border: 2px solid #7a7a7a;
+    color: #dfd8d8;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    transition: all 0.3s ease;
+}
+
+.menu-button-small:hover {
+    background: #7a7a7a;
+    border-color: #9a9a9a;
+}
+
+/* Utility Classes */
+.text-light {
+    color: #dfd8d8;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.mt-8 {
+    margin-top: 8px;
+}
+
+.label-text {
+    color: #dfd8d8;
+    font-size: 18px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.flex-gap {
+    display: flex;
+    gap: 10px;
+}
+
+.slider {
+    width: 100%;
+    cursor: pointer;
 }

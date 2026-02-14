@@ -4,19 +4,772 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/gameStyles.css">
-    <title>Document</title>
+    <title>City of Whispers</title>
 </head>
 <body>
 
+<div id="title-screen" class="title-screen">
+  <img class="title-background" src="./assets/images/MainPic.png" alt="City of Whispers">
+  <div class="menu-overlay">
+    <h1 class="game-title">City of Whispers</h1>
+    <div class="menu-container" id="menu-container">
+        <button id="new-game-btn" class="menu-button" data-i18n="continueGame"></button>
+        <button id="load-game-btn" class="menu-button" data-i18n="loadGame"></button>
+        <button id="settings-btn" class="menu-button" data-i18n="settings"></button>
+        <button id="exit-btn" class="menu-button" data-i18n="exit"></button>
+    </div>
+    <div class="settings-container" id="settings-container">
+        <h2 class="text-light mb-30" data-i18n="settingsTitle"></h2>
+        <div class="settings-group">
+            <label class="label-text" data-i18n="languageLabel"></label>
+            <div class="flex-gap">
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="ru">RU</button>
+                <button class="lang-btn" data-lang="bg">BG</button>
+            </div>
+        </div>
+        <div class="settings-group mt-30">
+            <label for="font-size-slider" class="label-text" data-i18n="fontSizeLabel"></label>
+            <input type="range" id="font-size-slider" min="14" max="28" value="18" class="slider" title="Adjust font size">
+            <span id="font-size-value" class="text-light mt-8">18px</span>
+        </div>
+        <button id="back-btn" class="menu-button mt-30">Back</button>
+    </div>
+    <div class="load-game-container" id="load-game-container">
+        <h2 class="text-light mb-30" i18n="loadGame"></h2>
+        <div id="load-game-slots" class="load-game-slots">
+          <div class="load-slot-row">
+            <button class="load-game-slot-btn" data-slot="1">
+              <span class="slot-title">Save Slot 1</span>
+              <span class="slot-info">Empty</span>
+            </button>
+            <button type="button" class="delete-slot-btn" data-slot="1" title="Delete save">
+              <img src="./assets/images/delete-svgrepo-com.svg" alt="Delete"/>
+            </button>
+          </div>
+          <div class="load-slot-row">
+            <button class="load-game-slot-btn" data-slot="2">
+              <span class="slot-title">Save Slot 2</span>
+              <span class="slot-info">Empty</span>
+            </button>
+            <button type="button" class="delete-slot-btn" data-slot="2" title="Delete save">
+              <img src="./assets/images/delete-svgrepo-com.svg" alt="Delete"/>
+            </button>
+          </div>
+          <div class="load-slot-row">
+            <button class="load-game-slot-btn" data-slot="3">
+              <span class="slot-title">Save Slot 3</span>
+              <span class="slot-info">Empty</span>
+            </button>
+            <button type="button" class="delete-slot-btn" data-slot="3" title="Delete save">
+              <img src="./assets/images/delete-svgrepo-com.svg" alt="Delete"/>
+            </button>
+          </div>
+        </div>
+        <button id="load-back-btn" class="menu-button mt-30">Back</button>
+    </div>
+  </div>
+</div>
+
+<div id="video-screen" class="video-screen hidden">
+  <video id="intro-video" width="100%" height="100%" muted>
+    <source src="./assets/images/MainMenu.mp4" type="video/mp4">
+  </video>
+</div>
+
+
 <div id="game">
+  <!-- Game Menu Button (Top Left) -->
+  <button id="game-menu-btn" class="game-menu-btn" title="Menu">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="6" width="24" height="2" fill="currentColor"/>
+      <rect x="4" y="15" width="24" height="2" fill="currentColor"/>
+      <rect x="4" y="24" width="24" height="2" fill="currentColor"/>
+    </svg>
+  </button>
+
+  <!-- Main Game Content -->
   <div id="dialog-box">
     <div id="dialog-text"></div>
     <div id="choices"></div>
+  </div>
+
+  <!-- Game Menu Panel (Overlay on game) -->
+  <div id="game-menu-panel" class="game-menu-panel hidden">
+    <div class="game-menu-content">
+      <h2>Menu</h2>
+      
+      <!-- Save Game Section -->
+      <div class="game-menu-section">
+        <button class="game-menu-option" id="save-game-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="17 21 17 13 7 13 7 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="7 3 7 8 15 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Save Game</span>
+        </button>
+        <!-- Save Containers -->
+        <div id="save-containers" class="save-containers hidden">
+          <div id="save-slot-1" class="save-slot">
+            <div class="save-slot-row">
+              <button class="save-slot-btn" data-slot="1">
+                <span class="save-slot-title">Save Slot 1</span>
+                <span class="save-slot-info">Empty</span>
+              </button>
+              <button type="button" class="delete-slot-btn-in-game" data-slot="1" title="Delete save">
+                <img src="./assets/images/delete-svgrepo-com.svg" alt="Delete"/>
+              </button>
+            </div>
+          </div>
+          <div id="save-slot-2" class="save-slot">
+            <div class="save-slot-row">
+              <button class="save-slot-btn" data-slot="2">
+                <span class="save-slot-title">Save Slot 2</span>
+                <span class="save-slot-info">Empty</span>
+              </button>
+              <button type="button" class="delete-slot-btn-in-game" data-slot="2" title="Delete save">
+                <img src="./assets/images/delete-svgrepo-com.svg" alt="Delete"/>
+              </button>
+            </div>
+          </div>
+          <div id="save-slot-3" class="save-slot">
+            <div class="save-slot-row">
+              <button class="save-slot-btn" data-slot="3">
+                <span class="save-slot-title">Save Slot 3</span>
+                <span class="save-slot-info">Empty</span>
+              </button>
+              <button type="button" class="delete-slot-btn-in-game" data-slot="3" title="Delete save">
+                <img src="./assets/images/delete-svgrepo-com.svg" alt="Delete"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Load Game Section -->
+      <div class="game-menu-section">
+        <button class="game-menu-option" id="load-game-btn-in-game">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="17 21 17 13 7 13 7 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="7 3 7 8 15 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Load Game</span>
+        </button>
+        <!-- Load Containers -->
+        <div id="load-containers" class="save-containers hidden">
+          <div id="load-slot-1" class="save-slot">
+            <div class="load-slot-row">
+              <button class="load-slot-btn" data-slot="1">
+                <span class="save-slot-title">Save Slot 1</span>
+                <span class="save-slot-info">Empty</span>
+              </button>
+              <button class="delete-slot-btn-in-game" data-slot="1" title="Delete save">
+                <img src="./assets/images/delete-svgrepo-com.svg" alt="Delete"/>
+              </button>
+            </div>
+          </div>
+          <div id="load-slot-2" class="save-slot">
+            <div class="load-slot-row">
+              <button class="load-slot-btn" data-slot="2">
+                <span class="save-slot-title">Save Slot 2</span>
+                <span class="save-slot-info">Empty</span>
+              </button>
+              <button class="delete-slot-btn-in-game" data-slot="2" title="Delete save">
+                <img src="./assets/images/delete-svgrepo-com.svg" alt="Delete"/>
+              </button>
+            </div>
+          </div>
+          <div id="load-slot-3" class="save-slot">
+            <div class="load-slot-row">
+              <button class="load-slot-btn" data-slot="3">
+                <span class="save-slot-title">Save Slot 3</span>
+                <span class="save-slot-info">Empty</span>
+              </button>
+              <button class="delete-slot-btn-in-game" data-slot="3" title="Delete save">
+                <img src="./assets/images/delete-svgrepo-com.svg" alt="Delete"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings Section -->
+      <div class="game-menu-section">
+        <button class="game-menu-option" id="settings-game-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m3.08 3.08l4.24 4.24M1 12h6m6 0h6m-17.78 7.78l4.24-4.24m3.08-3.08l4.24-4.24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>Settings</span>
+        </button>
+      </div>
+
+      <!-- Settings Panel (Hidden by default) -->
+      <div id="game-settings-panel" class="game-settings-panel hidden">
+        <h3>Settings</h3>
+        <div class="settings-group-game">
+          <label>Language</label>
+          <div class="lang-buttons-game">
+            <button class="lang-btn-game" data-lang="en">EN</button>
+            <button class="lang-btn-game" data-lang="ru">RU</button>
+            <button class="lang-btn-game" data-lang="bg">BG</button>
+          </div>
+        </div>
+        <div class="settings-group-game">
+          <label for="font-size-slider-game">Font Size</label>
+          <input type="range" id="font-size-slider-game" min="14" max="28" value="18">
+          <span id="font-size-value-game">18px</span>
+        </div>
+        <button id="close-settings-game-btn" class="menu-button-small">Close</button>
+      </div>
+
+      <!-- Close Menu Button -->
+      <button id="close-menu-btn" class="menu-button-small">Close Menu</button>
+    </div>
+  </div>
+</div>
+<!-- In-page confirm modal to avoid native confirm() stealing focus -->
+<div id="confirm-backdrop" class="confirm-modal-backdrop" aria-hidden="true">
+  <div class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+    <div id="confirm-title">Confirm</div>
+    <div id="confirm-message" style="margin-top:8px;">Are you sure?</div>
+    <div class="confirm-buttons">
+      <button id="confirm-no" class="confirm-no" type="button">No</button>
+      <button id="confirm-yes" class="confirm-yes" type="button">Yes</button>
+    </div>
   </div>
 </div>
 
 <script type="module" src="./game.js"></script>
 
 <script type="module" src="./localization.js"></script>
+<script>
+// Load game-specific translations from GameTranslation.json
+async function loadGameTranslations() {
+  const lang = localStorage.getItem('lang') || 'en';
+  try {
+    const res = await fetch(`./assets/locales/${lang}/${lang}GameTranslation.json`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const translations = data.ui || {};
+    
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const value = translations[key];
+      if (value) {
+        el.innerHTML = value;
+      }
+    });
+  } catch (err) {
+    console.warn('Error loading game translations:', err);
+  }
+}
+
+// Update title screen load slots with save info
+function updateTitleScreenSlots() {
+  const loadGameSlotsButtons = document.querySelectorAll('.load-game-slot-btn');
+  loadGameSlotsButtons.forEach((btn) => {
+    const slot = btn.getAttribute('data-slot');
+    const saveData = localStorage.getItem(`gameProgress_slot${slot}`);
+    if (saveData) {
+      try {
+        const data = JSON.parse(saveData);
+        const timeString = new Date(data.timestamp).toLocaleString();
+        btn.querySelector('.slot-title').textContent = `Save Slot ${slot}`;
+        btn.querySelector('.slot-info').textContent = `Scene: ${data.currentScene} - ${timeString}`;
+      } catch (e) {
+        console.warn(`Failed to parse save slot ${slot}:`, e);
+      }
+    } else {
+      btn.querySelector('.slot-title').textContent = `Save Slot ${slot}`;
+      btn.querySelector('.slot-info').textContent = 'Empty';
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const newGameBtn = document.getElementById('new-game-btn');
+    const loadGameBtn = document.getElementById('load-game-btn');
+    const settingsBtn = document.getElementById('settings-btn');
+    const backBtn = document.getElementById('back-btn');
+    const loadBackBtn = document.getElementById('load-back-btn');
+    const exitBtn = document.getElementById('exit-btn');
+    const titleScreen = document.getElementById('title-screen');
+    const videoScreen = document.getElementById('video-screen');
+    const video = document.getElementById('intro-video');
+    const gameContainer = document.getElementById('game');
+    const menuContainer = document.getElementById('menu-container');
+    const settingsContainer = document.getElementById('settings-container');
+    const loadGameContainer = document.getElementById('load-game-container');
+    const fontSizeSlider = document.getElementById('font-size-slider');
+    const fontSizeValue = document.getElementById('font-size-value');
+    const langBtns = document.querySelectorAll('.lang-btn');
+    const loadGameSlotsButtons = document.querySelectorAll('.load-game-slot-btn');
+
+    // Helper: check if any save exists (main progress or slot)
+    function hasAnySave() {
+      if (localStorage.getItem('gameProgress')) return true;
+      for (let i = 1; i <= 3; i++) {
+        if (localStorage.getItem(`gameProgress_slot${i}`)) return true;
+      }
+      return false;
+    }
+
+    // Update title screen slots on initial load
+    updateTitleScreenSlots();
+
+
+
+    // Try to use icondelete.png if available, otherwise keep existing SVG
+    (async function setDeleteIconIfAvailable(){
+      const pngPath = './assets/images/icondelete.png';
+      try {
+        const res = await fetch(pngPath, { method: 'HEAD' });
+        if (res.ok) {
+          document.querySelectorAll('.delete-slot-btn img, .delete-slot-btn-in-game img').forEach(img => {
+            img.src = pngPath;
+          });
+        }
+      } catch (e) {
+        // network error or file not present — leave existing SVG
+        console.warn('icondelete.png not available, using fallback svg');
+      }
+    })();
+
+    // Settings button click
+    settingsBtn.addEventListener('click', function() {
+        menuContainer.classList.add('hidden');
+        settingsContainer.classList.add('active');
+    });
+
+    // Back button click for settings
+    backBtn.addEventListener('click', function() {
+        menuContainer.classList.remove('hidden');
+        settingsContainer.classList.remove('active');
+    });
+
+    // Load Game button click
+    loadGameBtn.addEventListener('click', function() {
+      menuContainer.classList.add('hidden');
+      loadGameContainer.classList.add('active');
+      updateTitleScreenSlots();
+    });
+
+    // Load Game slot buttons
+    loadGameSlotsButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const slot = this.getAttribute('data-slot');
+            const saveData = localStorage.getItem(`gameProgress_slot${slot}`);
+            if (saveData) {
+                // Load save data
+                localStorage.setItem('gameProgress', saveData);
+                // Mark that we're loading from a slot
+                sessionStorage.setItem('loadingFromSlot', 'true');
+                // Reload page to load the game with saved state
+                location.reload();
+            } else {
+                alert('This slot is empty');
+            }
+        });
+    });
+
+    // Title-screen delete buttons for slots
+    const titleDeleteButtons = document.querySelectorAll('.delete-slot-btn');
+    titleDeleteButtons.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+        const slot = this.getAttribute('data-slot');
+        if (!slot) return;
+        if (!confirm('Delete save in slot ' + slot + '?')) return;
+        localStorage.removeItem(`gameProgress_slot${slot}`);
+        updateTitleScreenSlots();
+      }, { passive: false });
+    });
+
+    // Load back button
+    loadBackBtn.addEventListener('click', function() {
+        menuContainer.classList.remove('hidden');
+        loadGameContainer.classList.remove('active');
+    });
+
+    // Auto-load game if reloading from a slot click
+    const isLoadingFromSlot = sessionStorage.getItem('loadingFromSlot');
+    if (isLoadingFromSlot) {
+        sessionStorage.removeItem('loadingFromSlot');
+        const savedGameData = localStorage.getItem('gameProgress');
+        if (savedGameData) {
+            titleScreen.classList.add('hidden');
+            gameContainer.style.opacity = '1';
+            gameContainer.style.visibility = 'visible';
+            gameContainer.style.pointerEvents = 'auto';
+            // Wait for game.js to initialize then setup menu
+            setTimeout(() => {
+                setupGameMenuListeners();
+            }, 100);
+        }
+    }
+
+    // Language buttons
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const lang = this.getAttribute('data-lang');
+            localStorage.setItem('lang', lang);
+            
+            // Update active button
+            langBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Dispatch language change event
+            const event = new CustomEvent('languageChanged', { detail: { lang } });
+            window.dispatchEvent(event);
+        });
+    });
+
+    // Font size slider
+    fontSizeSlider.addEventListener('input', function() {
+        const size = this.value;
+        fontSizeValue.textContent = size + 'px';
+        document.documentElement.style.setProperty('--game-font-size', size + 'px');
+        localStorage.setItem('fontSize', size);
+    });
+
+    // Load saved font size
+    const savedFontSize = localStorage.getItem('fontSize') || '18';
+    fontSizeSlider.value = savedFontSize;
+    fontSizeValue.textContent = savedFontSize + 'px';
+    document.documentElement.style.setProperty('--game-font-size', savedFontSize + 'px');
+
+    // Set active language button
+    const currentLang = localStorage.getItem('lang') || 'en';
+    langBtns.forEach(btn => {
+        if (btn.getAttribute('data-lang') === currentLang) {
+            btn.classList.add('active');
+        }
+    });
+
+    // Load game translations on startup and listen for language changes
+    loadGameTranslations();
+    window.addEventListener('languageChanged', (e) => {
+      loadGameTranslations();
+    });
+
+    newGameBtn.addEventListener('click', function() {
+      // If there is a saved game, behave as Continue
+      if (hasAnySave()) {
+        // Hide title and show game (game.js already loaded saved state)
+        titleScreen.classList.add('hidden');
+        gameContainer.style.opacity = '1';
+        gameContainer.style.visibility = 'visible';
+        gameContainer.style.pointerEvents = 'auto';
+        setTimeout(() => {
+          setupGameMenuListeners();
+        }, 100);
+        return;
+      }
+
+      // No save exists — start a fresh new game
+      localStorage.removeItem('gameProgress');
+      titleScreen.classList.add('hidden');
+      videoScreen.classList.remove('hidden');
+      video.currentTime = 0;
+      video.play();
+
+      video.onended = () => {
+        videoScreen.classList.add('hidden');
+        gameContainer.style.opacity = '1';
+        gameContainer.style.visibility = 'visible';
+        gameContainer.style.pointerEvents = 'auto';
+            
+        // Give game.js time to initialize, then restart game
+        setTimeout(() => {
+          window.postMessage({ type: 'restartGame' }, '*');
+          setupGameMenuListeners();
+        }, 100);
+      };
+    });
+
+
+    // Game Menu Functionality
+    function setupGameMenuListeners() {
+        const gameMenuBtn = document.getElementById('game-menu-btn');
+        const gameMenuPanel = document.getElementById('game-menu-panel');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const saveGameBtn = document.getElementById('save-game-btn');
+        const loadGameBtnInGame = document.getElementById('load-game-btn-in-game');
+        const saveContainers = document.getElementById('save-containers');
+        const loadContainers = document.getElementById('load-containers');
+        const saveSlotsButtons = document.querySelectorAll('.save-slot-btn');
+        const loadSlotsButtons = document.querySelectorAll('.load-slot-btn');
+        const settingsGameBtn = document.getElementById('settings-game-btn');
+        const gameSettingsPanel = document.getElementById('game-settings-panel');
+        const closeSettingsGameBtn = document.getElementById('close-settings-game-btn');
+        const fontSizeSliderGame = document.getElementById('font-size-slider-game');
+        const fontSizeValueGame = document.getElementById('font-size-value-game');
+        const langBtnsGame = document.querySelectorAll('.lang-btn-game');
+
+        // Update save slot displays
+        function updateSaveSlots() {
+          const lang = localStorage.getItem('lang') || 'en';
+          fetch(`./assets/locales/${lang}/${lang}GameTranslation.json`).then(r => r.json()).then(data => {
+            const ui = data.ui || {};
+            for (let i = 1; i <= 3; i++) {
+              const saveData = localStorage.getItem(`gameProgress_slot${i}`);
+              const slotBtn = document.querySelector(`.save-slot-btn[data-slot="${i}"]`);
+              if (saveData) {
+                const d = JSON.parse(saveData);
+                const timeString = new Date(d.timestamp).toLocaleString();
+                slotBtn.innerHTML = `<span class="save-slot-title">${(ui.saveSlot||'Save Slot {0}').replace('{0}', i)}</span><span class="save-slot-info">Scene: ${d.currentScene} - ${timeString}</span>`;
+              } else {
+                slotBtn.innerHTML = `<span class="save-slot-title">${(ui.saveSlot||'Save Slot {0}').replace('{0}', i)}</span><span class="save-slot-info">${ui.empty||'Empty'}</span>`;
+              }
+            }
+          }).catch(() => {
+            for (let i = 1; i <= 3; i++) {
+              const saveData = localStorage.getItem(`gameProgress_slot${i}`);
+              const slotBtn = document.querySelector(`.save-slot-btn[data-slot="${i}"]`);
+              if (saveData) {
+                const d = JSON.parse(saveData);
+                const timeString = new Date(d.timestamp).toLocaleString();
+                slotBtn.innerHTML = `<span class="save-slot-title">Save Slot ${i}</span><span class="save-slot-info">Scene: ${d.currentScene} - ${timeString}</span>`;
+              } else {
+                slotBtn.innerHTML = `<span class="save-slot-title">Save Slot ${i}</span><span class="save-slot-info">Empty</span>`;
+              }
+            }
+          });
+        }
+
+        // Update load slot displays
+        function updateLoadSlots() {
+          const lang = localStorage.getItem('lang') || 'en';
+          fetch(`./assets/locales/${lang}/${lang}GameTranslation.json`).then(r => r.json()).then(data => {
+            const ui = data.ui || {};
+            for (let i = 1; i <= 3; i++) {
+              const saveData = localStorage.getItem(`gameProgress_slot${i}`);
+              const slotBtn = document.querySelector(`.load-slot-btn[data-slot="${i}"]`);
+              if (saveData) {
+                const d = JSON.parse(saveData);
+                const timeString = new Date(d.timestamp).toLocaleString();
+                slotBtn.innerHTML = `<span class="save-slot-title">${(ui.saveSlot||'Save Slot {0}').replace('{0}', i)}</span><span class="save-slot-info">Scene: ${d.currentScene} - ${timeString}</span>`;
+              } else {
+                slotBtn.innerHTML = `<span class="save-slot-title">${(ui.saveSlot||'Save Slot {0}').replace('{0}', i)}</span><span class="save-slot-info">${ui.empty||'Empty'}</span>`;
+              }
+            }
+          }).catch(() => {
+            for (let i = 1; i <= 3; i++) {
+              const saveData = localStorage.getItem(`gameProgress_slot${i}`);
+              const slotBtn = document.querySelector(`.load-slot-btn[data-slot="${i}"]`);
+              if (saveData) {
+                const d = JSON.parse(saveData);
+                const timeString = new Date(d.timestamp).toLocaleString();
+                slotBtn.innerHTML = `<span class="save-slot-title">Save Slot ${i}</span><span class="save-slot-info">Scene: ${d.currentScene} - ${timeString}</span>`;
+              } else {
+                slotBtn.innerHTML = `<span class="save-slot-title">Save Slot ${i}</span><span class="save-slot-info">Empty</span>`;
+              }
+            }
+          });
+        }
+
+        // Save Game button
+        saveGameBtn.addEventListener('click', function() {
+            saveContainers.classList.toggle('hidden');
+            loadContainers.classList.add('hidden');
+            gameSettingsPanel.classList.add('hidden');
+            updateSaveSlots();
+        });
+
+        // Load Game button
+        loadGameBtnInGame.addEventListener('click', function() {
+            loadContainers.classList.toggle('hidden');
+            saveContainers.classList.add('hidden');
+            gameSettingsPanel.classList.add('hidden');
+            updateLoadSlots();
+        });
+
+        // Save slot buttons
+        saveSlotsButtons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const slot = this.getAttribute('data-slot');
+                const gameProgress = localStorage.getItem('gameProgress');
+                
+                if (gameProgress) {
+                    // Save current game to selected slot
+                    localStorage.setItem(`gameProgress_slot${slot}`, gameProgress);
+                    updateSaveSlots();
+                    // Silently save without alert
+                    gameMenuPanel.classList.add('hidden');
+                }
+            });
+        });
+
+        // Load slot buttons
+        loadSlotsButtons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const slot = this.getAttribute('data-slot');
+                const saveData = localStorage.getItem(`gameProgress_slot${slot}`);
+                if (saveData) {
+                    // Load the save data
+                    localStorage.setItem('gameProgress', saveData);
+                    // Mark that we're loading from a slot
+                    sessionStorage.setItem('loadingFromSlot', 'true');
+                    // Reload the game to reflect changes
+                    location.reload();
+                } else {
+                    alert('This slot is empty');
+                }
+            });
+        });
+
+        // Toggle menu panel
+        gameMenuBtn.addEventListener('click', function() {
+            gameMenuPanel.classList.toggle('hidden');
+            gameSettingsPanel.classList.add('hidden');
+            saveContainers.classList.add('hidden');
+            loadContainers.classList.add('hidden');
+        });
+
+        // Close menu
+        closeMenuBtn.addEventListener('click', function() {
+            gameMenuPanel.classList.add('hidden');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (gameMenuPanel.classList.contains('hidden')) return;
+            if (!gameMenuBtn.contains(event.target) && 
+                !gameMenuPanel.contains(event.target)) {
+                gameMenuPanel.classList.add('hidden');
+            }
+        });
+
+        // Settings Button
+        settingsGameBtn.addEventListener('click', function() {
+            gameSettingsPanel.classList.toggle('hidden');
+            saveContainers.classList.add('hidden');
+            loadContainers.classList.add('hidden');
+        });
+
+        // Close Settings
+        closeSettingsGameBtn.addEventListener('click', function() {
+            gameSettingsPanel.classList.add('hidden');
+        });
+
+        // Font Size Slider in Game
+        fontSizeSliderGame.addEventListener('input', function() {
+            const size = this.value;
+            fontSizeValueGame.textContent = size + 'px';
+            document.documentElement.style.setProperty('--game-font-size', size + 'px');
+            localStorage.setItem('fontSize', size);
+            fontSizeSlider.value = size;
+        });
+
+        // Load saved font size in game menu
+        const savedFontSize = localStorage.getItem('fontSize') || '18';
+        fontSizeSliderGame.value = savedFontSize;
+        fontSizeValueGame.textContent = savedFontSize + 'px';
+
+        // Language buttons in game menu
+        const currentLang = localStorage.getItem('lang') || 'en';
+        langBtnsGame.forEach(btn => {
+            if (btn.getAttribute('data-lang') === currentLang) {
+                btn.classList.add('active');
+            }
+            btn.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                localStorage.setItem('lang', lang);
+                
+                // Update active button in game menu
+                langBtnsGame.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                // Also update title screen buttons
+                langBtns.forEach(b => b.classList.remove('active'));
+                document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+                
+                // Dispatch language change event
+                const event = new CustomEvent('languageChanged', { detail: { lang } });
+                window.dispatchEvent(event);
+            });
+        });
+
+          // Delete buttons in game menu (save/load rows)
+          const inGameDeleteBtns = document.querySelectorAll('.delete-slot-btn-in-game');
+          inGameDeleteBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+              const slot = this.getAttribute('data-slot');
+              if (!slot) return;
+              if (!confirm('Delete save in slot ' + slot + '?')) return;
+              localStorage.removeItem(`gameProgress_slot${slot}`);
+              updateSaveSlots();
+              updateLoadSlots();
+              try { loadTitleMenuTranslations(); } catch (err) { console.warn(err); }
+            }, { passive: false });
+          });
+    }
+});
+  // Simple in-page confirm that returns a Promise<boolean>
+  function showConfirm(message) {
+    return new Promise(resolve => {
+      const backdrop = document.getElementById('confirm-backdrop');
+      const msg = document.getElementById('confirm-message');
+      const yes = document.getElementById('confirm-yes');
+      const no = document.getElementById('confirm-no');
+      msg.textContent = message;
+      backdrop.style.display = 'flex';
+      backdrop.setAttribute('aria-hidden', 'false');
+
+      function cleanup() {
+        backdrop.style.display = 'none';
+        backdrop.setAttribute('aria-hidden', 'true');
+        yes.removeEventListener('click', onYes);
+        no.removeEventListener('click', onNo);
+      }
+      function onYes(e) { e.preventDefault(); cleanup(); resolve(true); }
+      function onNo(e) { e.preventDefault(); cleanup(); resolve(false); }
+      yes.addEventListener('click', onYes);
+      no.addEventListener('click', onNo);
+      // allow Esc to cancel
+      function onKey(e) { if (e.key === 'Escape') { cleanup(); resolve(false); document.removeEventListener('keydown', onKey); } }
+      document.addEventListener('keydown', onKey);
+    });
+  }
+
+  // Replace existing confirm() usage by overriding window.confirm used earlier
+  // But safest is to update our delete handlers to call showConfirm directly; ensure they exist
+  (function replaceHandlers() {
+    const titleDeleteButtons = document.querySelectorAll('.delete-slot-btn');
+    titleDeleteButtons.forEach(btn => {
+      btn.addEventListener('click', async function(e) {
+        e.preventDefault(); e.stopPropagation(); if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+        const slot = this.getAttribute('data-slot'); if (!slot) return;
+        const ok = await showConfirm('Delete save in slot ' + slot + '?');
+        if (!ok) return;
+        localStorage.removeItem(`gameProgress_slot${slot}`);
+        try { updateSaveSlots(); updateLoadSlots(); } catch (_) {}
+      }, { passive: false });
+    });
+
+    const inGameDeleteBtns = document.querySelectorAll('.delete-slot-btn-in-game');
+    inGameDeleteBtns.forEach(btn => {
+      btn.addEventListener('click', async function(e) {
+        e.preventDefault(); e.stopPropagation(); if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+        const slot = this.getAttribute('data-slot'); if (!slot) return;
+        const ok = await showConfirm('Delete save in slot ' + slot + '?');
+        if (!ok) return;
+        localStorage.removeItem(`gameProgress_slot${slot}`);
+        try { updateSaveSlots(); updateLoadSlots(); } catch (_) {}
+      }, { passive: false });
+    });
+  })();
+</script>
+
 </body>
 </html>

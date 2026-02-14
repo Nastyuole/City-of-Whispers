@@ -52,19 +52,42 @@
     </div>
 </div>
 <section class="content">
-    <h2>Those Who Wander</h2>
+  <div class="container" id="main-container">
+  <button class="play-button" id="play-btn">▶ Play</button>
+
+<iframe 
+    id="game-frame" 
+    src="game.html"
+    allow="fullscreen"
+  ></iframe>
+</div>
+
+<div class="descriptions-section">
+  <div class="description-paragraph">
+    <img src="assets/images/choice-svgrepo-com.svg" alt="choices" class="description-svg">
+    <span data-i18n="description.paragraph1"></span>
+  </div>
+  <div class="description-paragraph">
+    <img src="assets/images/language-svgrepo-com.svg" alt="languages" class="description-svg">
+    <span data-i18n="description.paragraph2"></span>
+  </div>
+  <div class="description-paragraph">
+    <img src="assets/images/branch-svgrepo-com.svg" alt="branches" class="description-svg">
+    <span data-i18n="description.paragraph3"></span>
+  </div>
+</div>
+
+    <h2 data-i18n="characters.title"></h2>
 
 <div id="carouselExample" class="carousel slide">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <div class="character-card">
 
-  <div class="card-text top">
-    They arrived without a name.
+  <div class="card-text top" data-i18n="characters.saylas.card.top">
   </div>
 
-  <div class="card-text left">
-    A silent observer of the City, drawn to places where light fades.
+  <div class="card-text left" data-i18n="characters.saylas.card.left">
   </div>
 
   <div class="card-character">
@@ -76,12 +99,10 @@
     <div class="carousel-item">
       <div class="character-card">
 
-  <div class="card-text top">
-    They arrived without a name.
+  <div class="card-text top" data-i18n="characters.alaras.card.top">
   </div>
 
-  <div class="card-text left">
-    A silent observer of the City, drawn to places where light fades.
+  <div class="card-text left" data-i18n="characters.alaras.card.left">
   </div>
 
   <div class="card-character">
@@ -101,17 +122,11 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+<hr>
+<div class="my-1"> <div class="p-5 text-center warning"> <div class="container py-5"> <h1 class="desctiptrion" style="font-size: 30px; color:aliceblue" data-i18n="content.warning.title"> </h1> <p class="col-lg-8 mx-auto lead" data-i18n="content.warning.text">
 
-<div class="container" id="main-container">
-  <button class="play-button" id="play-btn">▶ Play</button>
-
-<iframe 
-    id="game-frame" 
-    src="game.html"
-    allow="fullscreen"
-  ></iframe>
-</div>
-
+</p> </div> </div> </div>
+<hr>
   
 </section>
 
@@ -119,7 +134,7 @@
      <footer>
         <p class="desctiptrion" data-i18n="footer.contactMe"></p>
          <ul class="nav justify-content-center border-top py-4 mb-3">
-            <li class="nav-item"><a href="mailto:nastyuole@gmail.com" class="nav-link px-2 text-body-secondary" data-i18n="footer.gmail"></a></li> 
+            <li class="nav-item"><a href="mailto:anastasiaolenina6@gmail.com" class="nav-link px-2 text-body-secondary" data-i18n="footer.gmail"></a></li> 
             <li class="nav-item"><a href="https://www.linkedin.com/in/anastasia-olenina-627673380/" class="nav-link px-2 text-body-secondary" data-i18n="footer.linkedin"></a></li>
             <li class="nav-item"><a href="https://github.com/Nastyuole" class="nav-link px-2 text-body-secondary" data-i18n="footer.github"></a></li>
      </footer> 

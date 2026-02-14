@@ -10,13 +10,37 @@
     "title": "City of Whispers",
     "description": "\"City of Whispers\" is a dark nonlinear text adventure game where a living city turns people's fears, desires, and mistakes into reality. You play a person that does not have something special. Every choice you make changes the streets, destinies, and laws of the world. There are no right paths: only consequences that cannot be predicted."
   },
+  "description": {
+    "paragraph1": "In a city that breathes and thinks, every decision matters. \"City of Whispers\" offers a multitude of branching choices that shape your story and the world around you. The consequences of your actions ripple through the narrative, creating a unique experience with each playthrough.",
+    "paragraph2": "Experience the game in your preferred language. With support for English, Bulgarian, and Russian, the immersive narrative of the City of Whispers is accessible to players around the world, preserving the atmospheric tone in every translation.",
+    "paragraph3": "Navigate through a world of interconnected paths where your perspective determines reality. The City adapts to your choices, revealing different secrets and endings based on the decisions you make along the way."
+  },
   "content": {
     "about_title": "About the Project",
     "about_text": "This is the main text of the site. You can write articles, blocks, information, anything here.",
     "section2_title": "Section 2",
     "section2_text": "The next content block. All scrolling down hides the intro and opens text sections.",
     "section3_title": "Section 3",
-    "section3_text": "You can add lots of text, images, cards, everything you need."
+    "section3_text": "You can add lots of text, images, cards, everything you need.",
+    "warning": {
+    "title": "Warning",
+    "text": "This is a web game, your progress and saves are stored in your browser and may be lost if you clear your browser data or switch to another device. But since the game is short, local saves will be enough."
+    }
+  },
+  "characters": {
+    "title": "Those Who Wander",
+    "saylas": {
+      "card": {
+        "top": "Saylas Morse",
+        "left": "The one who awoke in the silence of oblivion, clinging to the remnants of sanity amidst the frozen ghosts of the empire"
+      }
+    },
+    "alaras": {
+      "card": {
+        "top": "Alaras",
+        "left": "A white shadow in a mask of detachment, whose bloody gaze turns the world's agony into a cold and cynical experiment"
+      }
+    }
   },
   "footer": {
     "home": "Home",
