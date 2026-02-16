@@ -59,7 +59,6 @@ document.getElementById('bg')?.addEventListener('click', () => {
   dispatchLanguageChange('bg');
 });
 
-console.log('Script loaded');
 loadLanguage(currentLang);
 
 // MAYBE REMOVE LATER
