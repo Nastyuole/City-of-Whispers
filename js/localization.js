@@ -38,7 +38,8 @@ function dispatchLanguageChange(lang) {
   window.dispatchEvent(event);
   const iframe = document.getElementById('game-frame');
   if (iframe?.contentWindow) {
-    iframe.contentWindow.dispatchEvent(event);
+    // Use postMessage to reliably send cross-window messages to the iframe
+    iframe.contentWindow.postMessage({ type: 'languageChanged', lang }, '*');
   }
 }
 document.getElementById('ru')?.addEventListener('click', () => {

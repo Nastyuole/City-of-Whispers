@@ -1,5 +1,5 @@
 // Choice handling and button creation
-import { scenes, gameState } from './gameState.js';
+import { scenes, gameState, setParentParallelScene } from './gameState.js';
 import { showScene, showParallelScene } from './gameScenes.js';
 
 export function createChoiceButton(choice, sceneName) {
@@ -42,6 +42,8 @@ export function handleChoice(choice, currentSceneName) {
                 viewed: true,
                 timestamp: Date.now()
             };
+            // Remember the parent scene so saved games can return to this parallel flow
+            setParentParallelScene(currentSceneName);
         }
     }
     

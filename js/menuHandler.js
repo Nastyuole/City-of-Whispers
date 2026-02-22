@@ -1,7 +1,7 @@
 // Title screen menu handler
 import { showConfirm } from './gameUI.js';
-import { showScene } from './gameScenes.js';
-import { loadGameScenes, getCurrentLanguage } from './gameState.js';
+import { showScene, showParallelScene } from './gameScenes.js';
+import { loadGameScenes, getCurrentLanguage, getParentParallelScene } from './gameState.js';
 
 export function setupTitleScreenMenu() {
     const newGameBtn = document.getElementById('new-game-btn');
@@ -140,27 +140,55 @@ export function setupTitleScreenMenu() {
         }
     });
 
+    // Continue (resume) button - load saved game if available, otherwise start new
     newGameBtn.addEventListener('click', function() {
-        localStorage.removeItem('gameProgress');
+        const saved = localStorage.getItem('gameProgress');
         menuContainer.classList.remove('hidden');
         loadGameContainer.classList.remove('active');
-        titleScreen.classList.add('hidden');
-        videoScreen.classList.remove('hidden');
-        video.currentTime = 0;
-        video.play();
 
-        video.onended = async () => {
-            videoScreen.classList.add('hidden');
-            gameContainer.style.opacity = '1';
-            gameContainer.style.visibility = 'visible';
-            gameContainer.style.pointerEvents = 'auto';
+        if (!saved) {
+            // No save: behave like New Game (play intro then start)
+            titleScreen.classList.add('hidden');
+            videoScreen.classList.remove('hidden');
+            video.currentTime = 0;
+            video.play();
+
+            video.onended = async () => {
+                videoScreen.classList.add('hidden');
+                gameContainer.style.opacity = '1';
+                gameContainer.style.visibility = 'visible';
+                gameContainer.style.pointerEvents = 'auto';
+                try {
+                    await loadGameScenes(getCurrentLanguage());
+                    showScene('start');
+                } catch (e) {
+                    console.warn('Failed to show start scene:', e);
+                }
+            };
+            return;
+        }
+
+        // Resume saved game
+        titleScreen.classList.add('hidden');
+        gameContainer.style.opacity = '1';
+        gameContainer.style.visibility = 'visible';
+        gameContainer.style.pointerEvents = 'auto';
+
+        (async () => {
             try {
-                await loadGameScenes(getCurrentLanguage());
-                showScene('start');
+                const sceneToShow = await loadGameScenes(getCurrentLanguage());
+                if (sceneToShow) {
+                    const parent = getParentParallelScene();
+                    if (parent && typeof parent === 'string') {
+                        showParallelScene(sceneToShow, parent);
+                    } else {
+                        showScene(sceneToShow);
+                    }
+                }
             } catch (e) {
-                console.warn('Failed to show start scene:', e);
+                console.error('Failed to resume saved game:', e);
             }
-        };
+        })();
     });
 
     // Start new game from the 'start' scene with same intro animation

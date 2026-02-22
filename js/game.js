@@ -48,8 +48,27 @@ window.addEventListener('message', (event) => {
                 }
             })();
         }
+
+        // Allow parent window to notify iframe about language changes via postMessage
+        if (event.data && event.data.type === 'languageChanged') {
+            const lang = event.data.lang || localStorage.getItem('lang') || 'en';
+            // Re-dispatch as an internal CustomEvent so existing listeners react
+            window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
+        }
     } catch (e) { 
         console.error("Error processing message:", e);
+    }
+});
+
+// Fallback: listen for storage events (fires in this document when other windows change localStorage)
+window.addEventListener('storage', (e) => {
+    try {
+        if (e.key === 'lang') {
+            const lang = e.newValue || localStorage.getItem('lang') || 'en';
+            window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
+        }
+    } catch (err) {
+        console.error('Error handling storage event:', err);
     }
 });
 

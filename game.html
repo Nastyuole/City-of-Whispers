@@ -192,17 +192,8 @@
         </button>
       </div>
 
-      <!-- Exit Section (placed with other menu options) -->
-      <div class="game-menu-section">
-        <button class="game-menu-option" id="exit-to-menu-btn" title="Exit to Menu">
-          <img src="./assets/images/icons8-exit-30.png" alt="Exit" class="menu-icon">
-          <span data-i18n="exitToMenu"></span>
-        </button>
-      </div>
-
-      <!-- Settings Panel (Hidden by default) -->
+      <!-- Settings Panel (Hidden by default) - moved here so it appears under Settings and above Exit -->
       <div id="game-settings-panel" class="game-settings-panel hidden">
-        <h3 data-i18n="settingsHeader"></h3>
         <div class="settings-group-game">
           <label data-i18n="languageLabel"></label>
           <div class="lang-buttons-game">
@@ -217,6 +208,14 @@
           <span id="font-size-value-game">18px</span>
         </div>
         <button id="close-settings-game-btn" class="menu-button-small">Close</button>
+      </div>
+
+      <!-- Exit Section (placed with other menu options) -->
+      <div class="game-menu-section">
+        <button class="game-menu-option" id="exit-to-menu-btn" title="Exit to Menu">
+          <img src="./assets/images/icons8-exit-30.png" alt="Exit" class="menu-icon">
+          <span data-i18n="exitToMenu"></span>
+        </button>
       </div>
 
       <!-- Close Menu Button -->
@@ -236,15 +235,15 @@
   </div>
 </div>
 
-<script type="module" src="./game.js"></script>
+<script type="module" src="./js/game.js"></script>
 
-<script type="module" src="./localization.js"></script>
+<script type="module" src="./js/localization.js"></script>
 
 <script type="module">
-  import { setupTitleScreenMenu } from './menuHandler.js';
-  import { setupGameMenuListeners } from './gameMenu.js';
-  import { loadGameTranslations, setupLocalizationListener } from './settingsHandler.js';
-  import { showConfirm } from './gameUI.js';
+  import { setupTitleScreenMenu } from './js/menuHandler.js';
+  import { setupGameMenuListeners } from './js/gameMenu.js';
+  import { loadGameTranslations, setupLocalizationListener } from './js/settingsHandler.js';
+  import { showConfirm } from './js/gameUI.js';
 
  document.addEventListener('DOMContentLoaded', function() {
     setupTitleScreenMenu();

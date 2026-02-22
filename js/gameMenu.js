@@ -181,8 +181,33 @@ export function setupGameMenuListeners() {
         });
     });
 
+    // Keep in-game and title language buttons synchronized when language changes elsewhere
+    window.addEventListener('languageChanged', (e) => {
+        try {
+            const lang = e?.detail?.lang || localStorage.getItem('lang') || 'en';
+            // Update in-game language buttons
+            langBtnsGame.forEach(b => {
+                if (b.getAttribute('data-lang') === lang) b.classList.add('active'); else b.classList.remove('active');
+            });
+            // Update title screen language buttons (same document)
+            const titleLangBtns = document.querySelectorAll('.lang-btn');
+            titleLangBtns.forEach(b => {
+                if (b.getAttribute('data-lang') === lang) b.classList.add('active'); else b.classList.remove('active');
+            });
+        } catch (err) {
+            console.error('Error synchronizing language buttons:', err);
+        }
+    });
+
     if (exitToMenuBtn) {
         exitToMenuBtn.addEventListener('click', function() {
+            // Save current scene before leaving so Continue can restore correctly
+            try {
+                const current = getCurrentSceneName();
+                if (current) saveCurrentScene(current);
+            } catch (e) {
+                console.warn('Failed to autosave before exiting to menu:', e);
+            }
             gameMenuPanel.classList.add('hidden');
             gameSettingsPanel?.classList.add('hidden');
             saveContainers?.classList.add('hidden');

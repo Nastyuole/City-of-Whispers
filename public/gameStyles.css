@@ -87,8 +87,6 @@ body {
     line-height: 1.8;
     text-align: justify;
     max-height: 65vh;
-    scrollbar-width: thin;
-    scrollbar-color: #444 #222;
     
 }
 
@@ -103,7 +101,7 @@ body {
 }
 
 #dialog-text::-webkit-scrollbar-thumb {
-    background: #4a6fa5;
+    background: #2d4261;
     border-radius: 4px;
 }
 
@@ -734,7 +732,7 @@ body {
 
 /* Game Settings Panel */
 .game-settings-panel {
-    margin-top: 20px;
+    margin: 15px 0 15px 0;
     padding: 15px;
     background: rgba(50, 50, 60, 0.8);
     border: 1px solid #6a7a7a;
