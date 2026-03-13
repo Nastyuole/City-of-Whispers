@@ -330,3 +330,8 @@ html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
     left: auto;
   }
 }
+#iconsFrom {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #6b6b70;
+}
