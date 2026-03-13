@@ -69,7 +69,8 @@ export function resetGameState() {
     state.gameState.visitedScenes.clear();
     state.gameState.visitedScenes.add('start');
     state.gameState.completedChoices.clear();
-    state.gameState.parallelChoiceProgress = {};
+    // Mutate in place so exported `gameState` reference stays valid
+    Object.keys(state.gameState.parallelChoiceProgress).forEach(k => delete state.gameState.parallelChoiceProgress[k]);
     state.parentParallelScene = null;
     localStorage.removeItem('gameProgress');
 }
@@ -105,9 +106,11 @@ export async function loadGameScenes(lang) {
                 const gameData = JSON.parse(savedGameData);
                 state.gameState.visitedScenes.clear();
                 state.gameState.completedChoices.clear();
-                state.gameState.visitedScenes = new Set(gameData.gameState.visitedScenes);
-                state.gameState.completedChoices = new Set(gameData.gameState.completedChoices);
-                state.gameState.parallelChoiceProgress = gameData.gameState.parallelChoiceProgress;
+                // Populate in place so exported `gameState` reference stays valid
+                gameData.gameState.visitedScenes.forEach(s => state.gameState.visitedScenes.add(s));
+                gameData.gameState.completedChoices.forEach(c => state.gameState.completedChoices.add(c));
+                Object.keys(state.gameState.parallelChoiceProgress).forEach(k => delete state.gameState.parallelChoiceProgress[k]);
+                Object.assign(state.gameState.parallelChoiceProgress, gameData.gameState.parallelChoiceProgress);
                 state.parentParallelScene = gameData.parentParallelScene || null;
                 return gameData.currentScene; // Return scene to show
             } catch (error) {

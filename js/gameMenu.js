@@ -1,6 +1,6 @@
 // In-game menu handler
-import { showConfirm } from './gameUI.js';
 import { saveCurrentScene, getCurrentSceneName } from './gameState.js';
+import { setupDeleteButtons } from './menuHandler.js';
 
 export function setupGameMenuListeners() {
     const gameMenuBtn = document.getElementById('game-menu-btn');
@@ -223,19 +223,9 @@ export function setupGameMenuListeners() {
     }
 
     // In-game delete buttons
-    const inGameDeleteBtns = document.querySelectorAll('.delete-slot-btn-in-game');
-    inGameDeleteBtns.forEach(btn => {
-        btn.addEventListener('click', async function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const slot = this.getAttribute('data-slot');
-            if (!slot) return;
-            const ok = await showConfirm('Delete save in slot ' + slot + '?');
-            if (!ok) return;
-            localStorage.removeItem(`gameProgress_slot${slot}`);
-            updateSlotDisplays('save');
-            updateSlotDisplays('load');
-        }, { passive: false });
+   setupDeleteButtons('.delete-slot-btn-in-game', () => {
+        updateSlotDisplays('save');
+        updateSlotDisplays('load');
     });
    
 }

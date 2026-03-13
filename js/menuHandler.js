@@ -1,7 +1,40 @@
-// Title screen menu handler
+// menuHandler.js
 import { showConfirm } from './gameUI.js';
 import { showScene, showParallelScene } from './gameScenes.js';
-import { loadGameScenes, getCurrentLanguage, getParentParallelScene } from './gameState.js';
+import { loadGameScenes, getCurrentLanguage, getParentParallelScene, resetGameState } from './gameState.js';
+
+// ---------- Общие переводы ----------
+const translations = {
+    ru: { delete_save_confirmation: 'Удалить сохранение в слоте {{slot}}?' },
+    en: { delete_save_confirmation: 'Delete save in slot {{slot}}?' },
+    bg: { delete_save_confirmation: 'Изтрий запазването в слот {{slot}}?' }
+};
+
+// Функция перевода (читает язык из localStorage)
+function t(key, params = {}) {
+    const lang = localStorage.getItem('lang') || 'en';
+    const message = translations[lang]?.[key] || translations.en[key] || key;
+    return message.replace(/\{\{(\w+)\}\}/g, (_, p) => params[p] || '');
+}
+
+// ---------- Общая функция для кнопок удаления ----------
+export function setupDeleteButtons(selector, afterDelete) {
+    document.querySelectorAll(selector).forEach(btn => {
+        btn.addEventListener('click', async function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const slot = this.getAttribute('data-slot');
+            if (!slot) return;
+
+            const ok = await showConfirm(t('delete_save_confirmation', { slot }));
+            if (!ok) return;
+
+            localStorage.removeItem(`gameProgress_slot${slot}`);
+            afterDelete(slot);
+        }, { passive: false });
+    });
+}
+
 
 export function setupTitleScreenMenu() {
     const newGameBtn = document.getElementById('new-game-btn');
@@ -53,7 +86,6 @@ export function setupTitleScreenMenu() {
 
     updateTitleScreenSlots();
 
-
     settingsBtn.addEventListener('click', function() {
         menuContainer.classList.add('hidden');
         settingsContainer.classList.add('active');
@@ -88,21 +120,8 @@ export function setupTitleScreenMenu() {
         });
     });
 
-    
-    // Title screen delete buttons
-    const titleDeleteButtons = document.querySelectorAll('.delete-slot-btn');
-    titleDeleteButtons.forEach(btn => {
-        btn.addEventListener('click', async function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const slot = this.getAttribute('data-slot');
-            if (!slot) return;
-            const ok = await showConfirm('Delete save in slot ' + slot + '?');
-            if (!ok) return;
-            localStorage.removeItem(`gameProgress_slot${slot}`);
-            updateTitleScreenSlots();
-        }, { passive: false });
-    });
+    // buttons with class .delete-slot-btn are created dynamically, so we use a common function to set up their listeners
+    setupDeleteButtons('.delete-slot-btn', () => updateTitleScreenSlots());
 
     loadBackBtn.addEventListener('click', function() {
         menuContainer.classList.remove('hidden');
@@ -141,14 +160,13 @@ export function setupTitleScreenMenu() {
         }
     });
 
-    // Continue (resume) button - load saved game if available, otherwise start new
+    // Continue (resume) button
     newGameBtn.addEventListener('click', function() {
         const saved = localStorage.getItem('gameProgress');
         menuContainer.classList.remove('hidden');
         loadGameContainer.classList.remove('active');
 
         if (!saved) {
-            // No save: behave like New Game (play intro then start)
             titleScreen.classList.add('hidden');
             videoScreen.classList.remove('hidden');
             video.currentTime = 0;
@@ -169,7 +187,6 @@ export function setupTitleScreenMenu() {
             return;
         }
 
-        // Resume saved game
         titleScreen.classList.add('hidden');
         gameContainer.style.opacity = '1';
         gameContainer.style.visibility = 'visible';
@@ -192,9 +209,9 @@ export function setupTitleScreenMenu() {
         })();
     });
 
-    // Start new game from the 'start' scene with same intro animation
+    // Start new game
     loadStartBtn.addEventListener('click', function() {
-        localStorage.removeItem('gameProgress');
+        resetGameState(); // clears both localStorage AND in-memory state
         menuContainer.classList.remove('hidden');
         loadGameContainer.classList.remove('active');
         titleScreen.classList.add('hidden');
@@ -225,14 +242,6 @@ export function setupTitleScreenMenu() {
             gameContainer.style.opacity = '1';
             gameContainer.style.visibility = 'visible';
             gameContainer.style.pointerEvents = 'auto';
-            
         }
-    }
-}
-
-export function setupGameMenuListeners() {
-    // This will be defined in gameMenu.js
-    if (typeof window.setupGameMenuListeners === 'function') {
-        window.setupGameMenuListeners();
     }
 }
