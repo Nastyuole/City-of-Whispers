@@ -1,5 +1,5 @@
 // Choice handling and button creation
-import { scenes, gameState, setParentParallelScene } from './gameState.js';
+import { scenes, gameState, setParentParallelScene, resetGameState } from './gameState.js';
 import { showScene, showParallelScene } from './gameScenes.js';
 
 export function createChoiceButton(choice, sceneName) {
@@ -23,6 +23,7 @@ export function createChoiceButton(choice, sceneName) {
         btn.classList.add('choice-viewed');
     }
     
+
     btn.onclick = () => handleChoice(choice, sceneName);
     return btn;
 }
@@ -46,7 +47,17 @@ export function handleChoice(choice, currentSceneName) {
             setParentParallelScene(currentSceneName);
         }
     }
+    if (choice.id === 'end') {
+        const gameContainer = document.getElementById('game');
+        const titleScreen = document.getElementById('title-screen');
     
+        gameContainer.style.opacity = '0';
+        gameContainer.style.visibility = 'hidden';
+        gameContainer.style.pointerEvents = 'none';
+        titleScreen.classList.remove('hidden');
+        resetGameState();
+        return;
+    }
     if (choice.next) {
         if (choice.type === 'parallel') {
             showParallelScene(choice.next, currentSceneName);

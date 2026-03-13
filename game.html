@@ -144,7 +144,7 @@
       <div class="game-menu-section">
         <button class="game-menu-option" id="load-game-btn-in-game">
           <img src="./assets/images/icons8-save-50.png" style="width: 20px; height: 20px;" alt="Load Game"/>
-          <span>Load Game</span>
+          <span data-i18n="loadGame"></span>
         </button>
         <!-- Load Containers -->
         <div id="load-containers" class="save-containers hidden">
@@ -203,11 +203,11 @@
           </div>
         </div>
         <div class="settings-group-game">
-          <label for="font-size-slider-game">Font Size</label>
+          <label for="font-size-slider-game" data-i18n="fontSizeLabel"></label>
           <input type="range" id="font-size-slider-game" min="14" max="28" value="18">
           <span id="font-size-value-game">18px</span>
         </div>
-        <button id="close-settings-game-btn" class="menu-button-small">Close</button>
+        <button id="close-settings-game-btn" class="menu-button-small" data-i18n="back"></button>
       </div>
 
       <!-- Exit Section (placed with other menu options) -->
@@ -219,18 +219,18 @@
       </div>
 
       <!-- Close Menu Button -->
-      <button id="close-menu-btn" class="menu-button-small">Close Menu</button>
+      <button id="close-menu-btn" class="menu-button-small" data-i18n="closeMenu"></button>
     </div>
   </div>
 </div>
 <!-- In-page confirm modal to avoid native confirm() stealing focus -->
 <div id="confirm-backdrop" class="confirm-modal-backdrop" aria-hidden="true">
   <div class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
-  <div id="confirm-title">Confirm</div>
+  <div id="confirm-title" data-i18n="comfirm"></div>
   <div id="confirm-message">Are you sure?</div>
     <div class="confirm-buttons">
-      <button id="confirm-no" class="confirm-no" type="button">No</button>
-      <button id="confirm-yes" class="confirm-yes" type="button">Yes</button>
+      <button id="confirm-no" class="confirm-no" type="button" data-i18n="comfirm-No"></button>
+      <button id="confirm-yes" class="confirm-yes" type="button" data-i18n="comfirm-Yes"></button>
     </div>
   </div>
 </div>

@@ -71,6 +71,7 @@ export function resetGameState() {
     state.gameState.completedChoices.clear();
     state.gameState.parallelChoiceProgress = {};
     state.parentParallelScene = null;
+    localStorage.removeItem('gameProgress');
 }
 
 // Load game scenes based on selected language

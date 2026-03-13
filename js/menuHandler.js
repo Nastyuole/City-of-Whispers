@@ -88,6 +88,7 @@ export function setupTitleScreenMenu() {
         });
     });
 
+    
     // Title screen delete buttons
     const titleDeleteButtons = document.querySelectorAll('.delete-slot-btn');
     titleDeleteButtons.forEach(btn => {

@@ -7,6 +7,7 @@
     "loadGame": "Load Game",
     "saveGame": "Save Game",
     "settings": "Settings",
+    "closeMenu": "Close Menu",
     "exit": "Exit",
     "exitToMenu": "Exit to Menu",
     "languageLabel": "Language",
@@ -14,7 +15,10 @@
     "back": "Back",
     "saveSlot": "Save Slot {0}",
     "empty": "Empty",
-    "end": "End"
+    "end": "End",
+    "comfirm" : "Confirm",
+    "comfirm-No": "No",
+    "comfirm-Yes": "Yes"
   },
   "scenes": {
     "start": {
@@ -84,7 +88,7 @@
       "paragraphs": [
         {"text": "Suddenly—a sound! Creaking, loud, strained, an unnatural creak, as if a dull saw was dragged across rusty iron. Your body freezes completely still before your mind even processes the information. It's your apartment's front door creaking. That very lock you struggled to open with your key yesterday, afraid it would break."},
         {"text": "Thoughts, which were darting from plan to plan, collapse into one sharp, icy point of fear."},
-        {"text": "Who?  \nWho could have entered?  \nWho can just... enter? In this silence?"},
+        {"text": "Who? \nWho could have entered? \nWho can just... enter? In this silence?"},
         {"text": "Footsteps. Heavy, confident. Not hurried, but measured. A distinct strike of a sole on the hallway floorboards. One. Two. Pause. Another step. A man. By the weight, by the foot placement—definitely a man."},
         {"text": "Your gaze locks onto the open door of your room. You left it wide open while you rushed between the window and the dresser. Now that rectangle of dark hallway looks like a maw. And the sound of footsteps is approaching it. They come not from afar; they are here. Right on the threshold."},
         {"text": "Your hand instinctively finds that dull kitchen knife. Fingers in rough gloves clench the wooden handle until your knuckles turn white. It's not a weapon. It's a pathetic piece of metal. But it's something. You step back from the door, pressing your back against the wall by the window, to see the entire doorway."},
@@ -111,13 +115,13 @@
         {"text": "He stops, just a few steps away from you. His masked head turns slowly, surveying the room. A smooth motion. As if he's not just looking, but studying. His gaze slides over your unmade bed, over scattered clothes, over the open case with papers, over the bottle of murky water on the floor. It lingers on your face, on your knife, on your tense posture."},
         {"text": "He doesn't speak. Makes no threatening moves. He just stands and watches. This pause, this silent observation, is far more frightening than any threat, because the more silent and calm a person is, the more terrifying what they might do."},
         {"text": "He finished examining the room. The red dots behind the lenses stopped on you, like two reflections of a distant fire in the dark night. In the silence, broken only by your strained breathing, his voice came from the speaker. It was distorted by the filter, but carried a strange, almost melodic intonation."},
-        {"text": "\"You're conscious?\" came from the speaker. The voice was distorted by the filter, but it held not just curiosity, but almost astonishment. \"Amazing… You're the first one I've met who's still in their right mind.\""},
+        {"text": "— You're conscious? — came from the speaker. The voice was distorted by the filter, but it held not just curiosity, but almost astonishment. — Amazing… You're the first one I've met who's still in their right mind."},
         {"text": "You don't answer. Your mind fights against panic, trying to find anything to say. But words stick in your throat."},
         {"text": "He took a step forward, not to close the distance for an attack. Rather, he wanted to get a better look at you, like a rare exhibit. The red dots behind the lenses slid over your face, lingered on your eyes, as if searching for a glimmer of thought within them."},
-        {"text": "\"You are different from the others.\" His voice was quiet, but held certainty. \"They are all... empty. Like zombies. They wander without purpose, without reason. They simply exist.\""},
+        {"text": "— You are different from the others. — His voice was quiet, but held certainty. — They are all... empty. They wander without purpose, without reason. They simply exist."},
         {"text": "He paused, as if expecting your answer. But you remain silent."},
-        {"text": "\"So what's the reason you're different from them? Why aren't you wandering the city like a lost kitten?\" the stranger asked mockingly."},
-        {"text": "\"Well? Who are you then?\""}
+        {"text": "— So what's the reason you're different from them? Why aren't you wandering the city like a lost kitten? — the stranger asked mockingly."},
+        {"text": "— Well? Who are you then? "}
       ],
       "choices": [
         {
@@ -145,7 +149,7 @@
       "paragraphs": [
         {"text": "Your choice is made in silence, between two heartbeats. The thought of dialogue with this... creature now seems not absurd, but insulting. He entered your space, breathed your air, studied you. And for that, he had to pay."},
         {"text": "Muscles, locked in fear, now coil into a single, ready-to-release spring. You take a deep, silent breath. The knife slides smoothly behind the fold of your sweater, the cold blade pressed against your thigh. And you retreat—not a step, but a timid shuffle of a frightened animal, pressing your back against the cold wall."},
-        {"text": "\"I... I don't know,\" you mutter, your voice trembling, your gaze helplessly fixed on the floor. \"I just woke up, and everything was so...\""},
+        {"text": "— I... I don't know, — you mutter, your voice trembling, your gaze helplessly fixed on the floor. — I just woke up, and everything was so..."},
         {"text": "The act works flawlessly. He buys into this image of a broken, lost victim. His head tilts slightly, those two crimson embers in the lenses pause—a predator assessing prey that has already surrendered."},
         {"text": "And this is your moment."},
         {"text": "Your lunge forward is not a fencing thrust, but an ugly, furious explosion of desperation. You don't strike at his torso, where he expects it. You put everything into the blow—from your foot to your fingertips—swinging the knife upward, aiming the tip at the vulnerable gap beneath the filter canister, at the strip of exposed neck."},
@@ -155,11 +159,11 @@
         {"text": "His hand, which had been hanging at his side, snaps up—not a movement, but a blurred streak in your peripheral vision. You don't see the strike. You only feel it—the crushing, dry crack of the edge of his hand against your wrist. Pain—white, blinding, searing away all thought. Your fingers open involuntarily. The knife falls with a pathetic clatter. Your arm dangles, a useless, foreign appendage."},
         {"text": "You recoil on instinct, but he is already there. His second move is not lightning-fast, but inexorable, like the movement of a glacier. He grabs you not by the body—but by the collar of your sweater and shirt, twisting the fabric into a tight, choking garrote at your throat, and with absolute, inhuman force, rams your back against the wall. Air is forced from your lungs in a hoarse groan. You dangle in his grip, like a puppet with its strings cut. Your own clothing has become a noose."},
         {"text": "Behind the lenses, the red dots now burn with a cold, methodical fire. Slowly, almost curiously, he brings the gas mask's visage close to your face, so you see your own reflection, twisted with pain and terror, in the dark lenses."},
-        {"text": "\"Foolish,\" hisses the distorted voice from the speaker. \"The 'fight or flight' reflex… primitive. I expected more from one who retained their reason. Apparently, your resistance to the fog is an accident. And I had hoped for… something interesting.\""},
+        {"text": "— Foolish, — hisses the distorted voice from the speaker. — The 'fight or flight' reflex… primitive. I expected more from one who retained their reason. Apparently, your resistance to the fog is an accident. And I had hoped for… something interesting. —"},
         {"text": "He shakes you once, short and harsh. Your head hits the plaster with a dull thud. Dirty blurs swim before your eyes."},
-        {"text": "\"I could simply break your neck,\" he pronounces, letting each word seep into your clouded consciousness. \"But I won't.\""},
+        {"text": "— I could simply break your neck, — he pronounces, letting each word seep into your clouded consciousness. — But I won't. —"},
         {"text": "His grip releases. You slide down the wall to the floor, choking on convulsive, rasping coughs, clutching your numb wrist. He stands over you—monumental, indifferent, as if cast from shadow and metal."},
-        {"text": "\"Because you might still be useful to me,\" he says finally, turning towards the door. \"Unlike the others.\""},
+        {"text": "— Because you might still be useful to me, — he says finally, turning towards the door. — Unlike the others. —"},
         {"text": "He turns and leaves. Without a backward glance, without a trace of that mocking benevolence he had at the start. Not a shred of it remains. Only icy emptiness."},
         {"text": "You sit on the floor, rubbing your swollen neck and gently shaking your wrist, trying to dispel the numbness and pain. Then, with effort, grunting, you rise. Holding onto the wall, step by step, you regain control. Your consciousness, clouded by adrenaline and humiliation, slowly clears, as does the oxygen flow to your brain."},
         {"text": "After a few minutes, you let go of the support. You breathe evenly. You look at the door, behind which he vanished and beyond which lies the unknown, fog-poisoned world."},
@@ -178,12 +182,12 @@
       "paragraphs": [
         {"text": "You don't move. Your fingers still clench the knife handle convulsively, but your mind, casting aside animal terror, grasps at the only straw: he talks. He asks questions. He shows something akin to astonishment. So, dialogue is possible. So, everything can be resolved peacefully."},
         {"text": "You force yourself to straighten up, overcoming the tremor in your knees. Your voice sounds hoarse, but steadier than you expected."},
-        {"text": "\"Maybe before asking who I am, you should introduce yourself?\" you ask, not taking your eyes off the two crimson stars in the lenses. \"And what is this 'fog' that makes everyone lose their minds, but I haven't, and you somehow haven't either—why?\""},
+        {"text": "— Maybe before asking who I am, you should introduce yourself? — you ask, not taking your eyes off the two crimson stars in the lenses. — And what is this 'fog' that makes everyone lose their minds, but I haven't, and you somehow haven't either—why? —"},
         {"text": "The stranger freezes. His masked head tilts slightly, as if examining a curious insect that has unexpectedly spoken. The pause stretches agonizingly long. Finally, a strange sound comes from the speaker—something between a hiss and a short, dry chuckle."},
-        {"text": "\"Hm. I am Alaras, a simple passerby. I saw the fog in time and put on a gas mask. But you are different. You were exposed to the fog and remained conscious, and it seems the fog concentrated for several days before becoming highly noticeable. But I don't know why everyone loses their minds because of the fog.\""},
+        {"text": "— Hm. I am Alaras, a simple passerby. I saw the fog in time and put on a gas mask. But you are different. You were exposed to the fog and remained conscious, and it seems the fog concentrated for several days before becoming highly noticeable. But I don't know why everyone loses their minds because of the fog. —"},
         {"text": "He takes one unhurried step sideways, clearing a path to the door, but his posture still speaks of complete readiness for any move you might make. His movements now seem not like a threat, but like observation."},
         {"text": "He gestures with a gloved hand towards the window."},
-        {"text": "\"I don't know why you survived. And I am interested to find out.\" Alaras turns to leave, but pauses for a moment in the doorway, a dark silhouette against the gloomy corridor, and utters words that are either hopeful or terrifying. \"I'll be keeping an eye on you. Just don't disappoint me.\""},
+        {"text": "— I don't know why you survived. And I am interested to find out. — Alaras turns to leave, but pauses for a moment in the doorway, a dark silhouette against the gloomy corridor, and utters words that are either hopeful or terrifying. — I'll be keeping an eye on you. Just don't disappoint me. —"},
         {"text": "He leaves. His footsteps, heavy and measured, quickly fade into the depths of the house. You are left alone with the ringing in your ears and his words, hanging in the air like a poisonous scent."},
         {"text": "You can no longer stay here. The silence of the house has become louder than any noise. You pull the scarf over your face, sling your bag of meager supplies over your shoulder, and, casting one last glance at your room, step into the hallway—time to find out what's happening outside."}
       ],
@@ -198,7 +202,7 @@
       "scene_id": "try_to_escape",
       "paragraphs": [
         {"text": "You don't answer. Any sound, any word now would betray your own instinct, which screams one thing: RUN. Your body moves with immediate speed, in time with your frantic heart. The window is a step away to your right; without hesitation, you open the window and jump, not giving the albino time to react."},
-        {"text": "The Albino notices the movement. His masked head turns slightly, following you. \"Oh?\" his voice sounds, carrying surprise and disappointment. \"Already? But we were just getting acquainted…\""},
+        {"text": "The Albino notices the movement. His masked head turns slightly, following you. — Oh? — his voice sounds, carrying surprise and disappointment. \"Already? But we were just getting acquainted…\""},
         {"text": "You didn't hear those words; you were running as fast as you could, away from him."}
       ],
       "choices": [
@@ -562,6 +566,7 @@
       ],
       "choices": [
         {
+          "id": "end",
           "label": "End"
         }
       ]
@@ -581,6 +586,7 @@
       ],
       "choices": [
         {
+          "id": "end",
           "label": "End"
         }
       ]
