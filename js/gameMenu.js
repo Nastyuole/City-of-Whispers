@@ -152,7 +152,7 @@ export function setupGameMenuListeners() {
         fontSizeValueGame.textContent = size + 'px';
         document.documentElement.style.setProperty('--game-font-size', size + 'px');
         localStorage.setItem('fontSize', size);
-        fontSizeSlider.value = size;
+        if (fontSizeSlider) fontSizeSlider.value = size;
     });
 
     const savedFontSize = localStorage.getItem('fontSize') || '18';

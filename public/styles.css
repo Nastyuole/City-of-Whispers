@@ -335,3 +335,151 @@ html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
     font-size: 14px;
     color: #6b6b70;
 }
+
+/* =====================
+   MOBILE STYLES
+   max-width: 768px
+   ===================== */
+
+@media (max-width: 768px) {
+ 
+  /* Header */
+  .header-main {
+    padding: 8px 0;
+  }
+ 
+  .intro-wrapper {
+    position: fixed;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+  }
+ 
+  .intro-image {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    transform: none;
+    object-fit: cover;
+    object-position: 65% center;
+  }
+ 
+  .text-card {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 100%;
+    padding: 20px 18px;
+    border-radius: 14px;
+    box-sizing: border-box;
+  }
+ 
+  .desctiptrion {
+    font-size: 17px;
+  }
+ 
+  /* Play button */
+  .play-button {
+    font-size: 18px;
+    padding: 10px 22px;
+  }
+ 
+  /* Main content */
+  .content {
+    padding: 40px 6%;
+  }
+ 
+  .content h2 {
+    font-size: 26px;
+    margin-top: 40px;
+    margin-bottom: 14px;
+  }
+ 
+  .content p {
+    font-size: 17px;
+    line-height: 1.65em;
+  }
+ 
+  /* Description paragraphs */
+  .descriptions-section {
+    margin: 24px 0;
+    gap: 14px;
+  }
+ 
+  .description-paragraph {
+    max-width: 100%;
+    padding: 18px 20px;
+    border-radius: 16px;
+    font-size: 16px;
+    flex-direction: row;
+    align-items: flex-start;
+    transform: translateX(-30px);
+  }
+ 
+  .description-svg {
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+  }
+ 
+  /* Character card */
+  .character-card {
+    height: auto;
+    margin: 30px auto 60px auto;
+    padding: 24px 20px 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 14px;
+  }
+ 
+  .card-text {
+    position: relative;
+    top: auto;
+    left: auto;
+    max-width: 100%;
+    font-size: 19px;
+    opacity: 1;
+    text-align: center;
+  }
+ 
+  .card-text.top {
+    top: auto;
+    left: auto;
+    margin-bottom: 10px;
+  }
+ 
+  .card-text.left {
+    top: auto;
+    left: auto;
+  }
+ 
+  /* Re-enable animations on mobile (simpler) */
+  .character-card.animate .card-text.top,
+  .character-card.animate .card-text.left {
+    animation: fadeInDown 0.9s ease forwards;
+    animation-delay: 0.2s;
+  }
+ 
+  .card-character {
+    position: relative;
+    width: 200px;
+    margin-top: 16px;
+  }
+ 
+  .card-character img {
+    width: 100%;
+  }
+ 
+  /* Footer */
+  .footer-content {
+    padding: 14px 20px;
+  }
+ 
+  #iconsFrom {
+    font-size: 12px;
+  }
+}
+ 

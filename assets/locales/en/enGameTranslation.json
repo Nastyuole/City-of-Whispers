@@ -182,14 +182,19 @@
       "paragraphs": [
         {"text": "You don't move. Your fingers still clench the knife handle convulsively, but your mind, casting aside animal terror, grasps at the only straw: he talks. He asks questions. He shows something akin to astonishment. So, dialogue is possible. So, everything can be resolved peacefully."},
         {"text": "You force yourself to straighten up, overcoming the tremor in your knees. Your voice sounds hoarse, but steadier than you expected."},
-        {"text": "— Maybe before asking who I am, you should introduce yourself? — you ask, not taking your eyes off the two crimson stars in the lenses. — And what is this 'fog' that makes everyone lose their minds, but I haven't, and you somehow haven't either—why? —"},
-        {"text": "The stranger freezes. His masked head tilts slightly, as if examining a curious insect that has unexpectedly spoken. The pause stretches agonizingly long. Finally, a strange sound comes from the speaker—something between a hiss and a short, dry chuckle."},
+        {"text": "— Maybe before asking who I am, you should introduce yourself? — you ask, not taking your eyes off the two crimson stars in the lenses. — And what is this 'fog' that makes everyone lose their minds, but I somehow haven't, and you somehow haven't either—why? —"},
+        {"text": "The stranger freezes. His gas-masked head tilts slightly, as if examining a curious insect that has unexpectedly spoken. The pause stretches agonizingly long. Finally, a strange sound comes from the speaker—something between a hiss and a short, dry chuckle."},
         {"text": "— Hm. I am Alaras, a simple passerby. I saw the fog in time and put on a gas mask. But you are different. You were exposed to the fog and remained conscious, and it seems the fog concentrated for several days before becoming highly noticeable. But I don't know why everyone loses their minds because of the fog. —"},
-        {"text": "He takes one unhurried step sideways, clearing a path to the door, but his posture still speaks of complete readiness for any move you might make. His movements now seem not like a threat, but like observation."},
-        {"text": "He gestures with a gloved hand towards the window."},
+        {"text": "He takes one unhurried step sideways, clearing a path to the door, but his posture still speaks of complete readiness for any move you might make. His movements now seem not like a threat, but like study."},
+        {"text": "You don't move. Your fingers still clench the knife handle convulsively, but your mind, casting aside animal terror, grasps at the only straw: he talks. He asks questions. He shows something akin to astonishment. So, dialogue is possible. So, answers can be obtained."},
+        {"text": "You force yourself to straighten up, overcoming the tremor in your knees. Your voice sounds hoarse, but steadier than you expected."},
+        {"text": "— Before asking who I am, — you say, looking straight at the two crimson glimmers in the lenses, — you should introduce yourself. And explain what this fog is that is driving an entire city mad. And why I am conscious? And you too—why? —"},
+        {"text": "The stranger freezes. His gas-masked head slowly tilts, as if he has just seen a talking mushroom. The pause stretches so long that you hear your own blood pounding in your ears."},
+        {"text": "— Introduce myself? Very well. My name is Alaras. A simple passerby. I saw the fog from a distance, and it interested me, and I decided I would come and see what was happening. Well, I did not expect such an effect… This is interesting, is it not? — said the Albino in an entranced voice, as if he had found a puzzle no one had yet solved."},
+        {"text": "He points with a gloved hand toward the window."},
         {"text": "— I don't know why you survived. And I am interested to find out. — Alaras turns to leave, but pauses for a moment in the doorway, a dark silhouette against the gloomy corridor, and utters words that are either hopeful or terrifying. — I'll be keeping an eye on you. Just don't disappoint me. —"},
         {"text": "He leaves. His footsteps, heavy and measured, quickly fade into the depths of the house. You are left alone with the ringing in your ears and his words, hanging in the air like a poisonous scent."},
-        {"text": "You can no longer stay here. The silence of the house has become louder than any noise. You pull the scarf over your face, sling your bag of meager supplies over your shoulder, and, casting one last glance at your room, step into the hallway—time to find out what's happening outside."}
+        {"text": "You can no longer stay here. The silence of the house has become louder than any noise. You pull the scarf over your face, sling your bag of meager supplies over your shoulder, and, casting one last glance at your room, step into the hallway—time to find out what is happening outside."}
       ],
       "choices": [
         {
@@ -303,12 +308,6 @@
         {"text": "These were not mystical signs, but familiar, frightening symptoms of severe physical illness. Intoxication, damage to the nervous system. He looked like a patient in the most critical ward of an infectious disease hospital, simply left here, on the street."},
         {"text": "You stepped back, heart pounding wildly. It was too close. Too personal. Too human."},
         {"text": "There were no answers on his face. Only the quiet horror of an ordinary, helpless illness, pushed to its extreme. You felt uneasy. You stepped back, wishing you could erase this too-human, too-simple suffering from your memory."}
-      ],
-      "choices": [
-        {
-          "label": "Return",
-          "next": "start"
-        }
       ]
     },
     "examine_horse_and_hands": {
@@ -322,12 +321,6 @@
         {"text": "That's it. No mystery. He was bringing a gift to his child. Probably not living in this city. He was likely hurrying to catch a train or a stagecoach when the fog overtook him. In his final moment, losing consciousness or control of his body, he dropped this little horse, and all his business papers."},
         {"text": "This simple, mundane tragedy resonates within you with a quiet, oppressive emptiness. Far more terrifying than any fantastical horror. He was just a man, hurrying home. And now he's here, and his child will never receive the promised gift."},
         {"text": "You straighten up. There is nothing more for you to examine here."}
-      ],
-      "choices": [
-        {
-          "label": "Return",
-          "next": "start"
-        }
       ]
     },
     "examine_anomalies": {
@@ -338,12 +331,6 @@
         {"text": "<strong>The Ground</strong>. At his feet, in the cracks between the cobblestones, it's not wormwood growing. It's an unfamiliar grass: stiff, almost black stems with tiny, thick leaves resembling scales. The leaves are covered with the same sticky gloss. You step on a stem with your boot—it doesn't snap with a crunch, but crumples with resistance, like rubber, and releases a drop of murky, milky fluid that immediately begins to slowly evaporate, leaving a sharp, medicinal smell."},
         {"text": "This place wasn't random. It looked like a point where the fog manifested other, denser, almost physical properties. The air here was slightly thicker, and the silence even deeper, muffling even the sound of your own breath."},
         {"text": "The examination gave no answers, but changed the nature of the fear. The threat wasn't just in the air—it was eating into the stones and sprouting from the ground."}
-      ],
-      "choices": [
-        {
-          "label": "Return",
-          "next": "start"
-        }
       ]
     },
     "go_to_city_center": {
@@ -351,7 +338,8 @@
       "paragraphs": [
         {"text": "You look away, and decisively head towards the entrance to Broad Avenue—the direct path to the massive silhouettes of the center, where hope might still linger."},
         {"text": "You tear your gaze away from the strange spot by the tea house. There's nothing to wait for here. Your goal is the tall buildings of the center, symbols of order, where there might be answers or at least safe walls."},
-        {"text": "You resolutely turn onto Broad Avenue, a wide thoroughfare leading straight to the town hall and banking districts. However, the path proves less direct than on the map. After a few hundred meters, the street is blocked by a pile-up—two collided and burnt-out cargo vans, around which, like iron filings to a magnet, dozens of the 'lost' are drawn. They stand motionless by the smoldering wrecks, faces turned to the black smoke, as if it held the final secret of the world."},
+        {"text": "You resolutely turn onto Broad Avenue, a wide thoroughfare leading straight to the town hall and banking districts. However, the path proves less direct than on the map. After a few hundred meters, the street is blocked by a pile-up—two collided and burnt-out cargo vans, around which, like iron filings to a magnet, dozens of the 'lost' have gathered. They stand motionless by the blazing wrecks, faces turned to the black smoke, as if it held the final secret of the world."},
+        {"text": "Pushing through this crowd would mean attracting attention and possibly provoking an unknown reaction. A detour to the left leads into a dark, narrow alley from which an especially strong, sweet bitterness emanates. To the right is a slightly wider passage, clearly leading towards the Old Town, where the covered market square is located. From there, you recall, there are several passages to the back courtyards of the administrative buildings."},
         {"text": "Pushing through this crowd would mean attracting attention and possibly provoking an unknown reaction. A detour to the left leads into a dark, narrow alley from which an especially strong, sweet bitterness emanates. To the right is a slightly wider passage, clearly leading towards the Old Town, where the covered market square is located. From there, you recall, there are several passages to the back courtyards of the administrative buildings."},
         {"text": "Risking pushing through a clearly anomalous gathering of people by the fire seems insane. The alley on the left is frightening with its concentrated stench. The market, despite its openness, seems the least mysterious and most predictable path—a familiar space where you can find your bearings."},
         {"text": "You're not in the habit of playing with fire, so the choice is obvious—you choose the market."},
@@ -361,6 +349,8 @@
       ],
       "choices": [
         {
+          "id": "go_to_market",
+          "type": "once",
           "label": "Go through the market",
           "next": "go_to_market"
         }
@@ -432,11 +422,13 @@
       ],
       "choices": [
         {
+          "id": "wait",
           "type": "once",
           "label": "Wait",
           "next": "wait"
         },
         {
+          "id": "move_forward_in_market",
           "type": "once",
           "label": "Move forward",
           "next": "move_forward_in_market"
@@ -455,6 +447,8 @@
       ],
       "choices": [
         {
+          "id": "move_forward_in_market",
+          "type": "once",
           "label": "Move forward",
           "next": "move_forward_in_market"
         }

@@ -15,6 +15,7 @@ export function showScene(name) {
     const scene = scenes[name];
     if (!scene) return;
     
+    
     saveCurrentScene(name);
     setCurrentScene(name);
     gameState.visitedScenes.add(name);

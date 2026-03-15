@@ -119,12 +119,10 @@ export async function loadGameScenes(lang) {
                 return "start";
             }
         } else {
-            console.log('No saved game found, starting fresh');
             resetGameState();
             return "start";
         }
     } catch (error) {
-        console.error('Error on loading scenes:', error);
         return null;
     } finally {
         state.isLoadingScenes = false;

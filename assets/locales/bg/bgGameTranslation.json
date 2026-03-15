@@ -349,6 +349,8 @@
       ],
       "choices": [
         {
+          "id": "go_to_market",
+          "type": "once",
           "label": "Премини през пазара",
           "next": "go_to_market"
         }
@@ -420,11 +422,13 @@
       ],
       "choices": [
         {
+          "id": "wait",
           "type": "once",
           "label": "Изчакай",
           "next": "wait"
         },
         {
+          "id": "move_forward_in_market",
           "type": "once",
           "label": "Продължи напред",
           "next": "move_forward_in_market"
@@ -443,6 +447,8 @@
       ],
       "choices": [
         {
+          "id": "move_forward_in_market",
+          "type": "once",
           "label": "Продължи напред",
           "next": "move_forward_in_market"
         }
