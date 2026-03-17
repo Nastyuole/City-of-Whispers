@@ -3,7 +3,6 @@ body {
     background: #000;
     color: white;
 }
-/* Custom scrollbar for html and body */
 html::-webkit-scrollbar, body::-webkit-scrollbar {
   width: 8px;
 }
@@ -155,6 +154,11 @@ html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
 
 .nav-link {
     color: #6b6b70 !important;
+}
+
+.note{
+  text-align: center;
+  padding: 10px 20px;
 }
 
 .descriptions-section {
@@ -343,7 +347,6 @@ html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
 
 @media (max-width: 768px) {
  
-  /* Header */
   .header-main {
     padding: 8px 0;
   }
@@ -366,7 +369,7 @@ html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
  
   .text-card {
     position: absolute;
-    bottom: 5%;
+    bottom: 10%;
     left: 50%;
     transform: translateX(-50%);
     width: 92%;
@@ -380,13 +383,11 @@ html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
     font-size: 17px;
   }
  
-  /* Play button */
   .play-button {
     font-size: 18px;
     padding: 10px 22px;
   }
  
-  /* Main content */
   .content {
     padding: 40px 6%;
   }
@@ -402,7 +403,6 @@ html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
     line-height: 1.65em;
   }
  
-  /* Description paragraphs */
   .descriptions-section {
     margin: 24px 0;
     gap: 14px;
@@ -423,8 +423,7 @@ html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
     height: 36px;
     margin-right: 10px;
   }
- 
-  /* Character card */
+
   .character-card {
     height: auto;
     margin: 30px auto 60px auto;
@@ -456,7 +455,6 @@ html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
     left: auto;
   }
  
-  /* Re-enable animations on mobile (simpler) */
   .character-card.animate .card-text.top,
   .character-card.animate .card-text.left {
     animation: fadeInDown 0.9s ease forwards;
@@ -473,7 +471,6 @@ html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
     width: 100%;
   }
  
-  /* Footer */
   .footer-content {
     padding: 14px 20px;
   }
