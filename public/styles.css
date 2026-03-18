@@ -340,6 +340,19 @@ html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
     color: #6b6b70;
 }
 
+@media (max-width: 1280px) {
+  .intro-wrapper {
+    padding: 0;
+    background: none;
+  }
+
+  .intro-image {
+    padding: 0;
+    background: none;
+    transform: scale(1);
+    object-position: 65% center;
+  }
+}
 /* =====================
    MOBILE STYLES
    max-width: 768px

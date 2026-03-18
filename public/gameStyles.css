@@ -86,7 +86,6 @@ body {
     max-height: 65vh;
     
 }
-
 /* Sctollbar styling */
 #dialog-text::-webkit-scrollbar {
     width: 8px;
@@ -207,9 +206,6 @@ body {
     }
 }
 
-#dialog-text {
-    animation: fadeIn 0.8s ease-out;
-}
 
 /* Adaptive styles */
 @media (max-width: 768px) {
@@ -890,6 +886,7 @@ body {
     overflow-y: auto;
     margin-bottom: 0;
   }
+  
 
   #choices {
     padding: 10px;

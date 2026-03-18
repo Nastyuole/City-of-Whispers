@@ -3,21 +3,18 @@ import { showConfirm } from './gameUI.js';
 import { showScene, showParallelScene } from './gameScenes.js';
 import { loadGameScenes, getCurrentLanguage, getParentParallelScene, resetGameState } from './gameState.js';
 
-// ---------- Общие переводы ----------
-const translations = {
-    ru: { delete_save_confirmation: 'Удалить сохранение в слоте {{slot}}?' },
-    en: { delete_save_confirmation: 'Delete save in slot {{slot}}?' },
-    bg: { delete_save_confirmation: 'Изтрий запазването в слот {{slot}}?' }
-};
-
-// Функция перевода (читает язык из localStorage)
-function t(key, params = {}) {
+async function t(key, params = {}) {
     const lang = localStorage.getItem('lang') || 'en';
-    const message = translations[lang]?.[key] || translations.en[key] || key;
-    return message.replace(/\{\{(\w+)\}\}/g, (_, p) => params[p] || '');
+    try {
+        const res = await fetch(`./assets/locales/${lang}/${lang}GameTranslation.json`);
+        const data = await res.json();
+        const message = data.ui?.[key] || key;
+        return message.replace(/\{\{(\w+)\}\}/g, (_, p) => params[p] || '');
+    } catch {
+        return key;
+    }
 }
 
-// ---------- Общая функция для кнопок удаления ----------
 export function setupDeleteButtons(selector, afterDelete) {
     document.querySelectorAll(selector).forEach(btn => {
         btn.addEventListener('click', async function(e) {
@@ -26,7 +23,7 @@ export function setupDeleteButtons(selector, afterDelete) {
             const slot = this.getAttribute('data-slot');
             if (!slot) return;
 
-            const ok = await showConfirm(t('delete_save_confirmation', { slot }));
+            const ok = await showConfirm(await t('delete_save_confirmation', { slot }));
             if (!ok) return;
 
             localStorage.removeItem(`gameProgress_slot${slot}`);

@@ -14,6 +14,7 @@
     "fontSizeLabel": "Font Size",
     "back": "Back",
     "saveSlot": "Save Slot {0}",
+    "delete_save_confirmation": "Delete save in slot {{slot}}?",
     "empty": "Empty",
     "end": "End",
     "comfirm" : "Confirm",

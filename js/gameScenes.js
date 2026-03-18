@@ -10,11 +10,22 @@ function ensureDOMReady() {
     if (!choicesBox) choicesBox = document.getElementById("choices");
 }
 
+function animateDialogText() {
+    dialogText.style.transition = 'none';
+    dialogText.style.clipPath = 'inset(0 0 100% 0)';
+    dialogText.style.opacity = '1';
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            dialogText.style.transition = 'clip-path 0.8s ease';
+            dialogText.style.clipPath = 'inset(0 0 0% 0)';
+        });
+    });
+}
+
 export function showScene(name) {
     ensureDOMReady();
     const scene = scenes[name];
     if (!scene) return;
-    
     
     saveCurrentScene(name);
     setCurrentScene(name);
@@ -39,13 +50,10 @@ export function showScene(name) {
         pEl.innerHTML = scene.text || '';
         dialogText.appendChild(pEl);
     }
-    
+    animateDialogText();
+
     showChoicesForScene(scene, name);
 
-    // If this scene was reached directly (e.g. restored from save) but is
-    // actually a parallel sub-scene, attempt to find its parent so we can
-    // render a Continue/Return button matching `showParallelScene` behavior.
-    // This handles old saves that didn't store `parentParallelScene`.
     const parentKey = Object.keys(scenes).find(k => {
         const s = scenes[k];
         return Array.isArray(s?.choices) && s.choices.some(c => c.type === 'parallel' && c.next === name);
@@ -53,7 +61,6 @@ export function showScene(name) {
     if (parentKey) {
         const parentScene = scenes[parentKey];
         if (parentScene && parentScene.parallelGroup) {
-            // Append a continue button so player can return to the parent scene
             const continueBtn = document.createElement("button");
             continueBtn.className = "choice-btn continue-btn";
             continueBtn.textContent = gameTranslations.ui?.continue || "Continue →";
@@ -150,6 +157,7 @@ export function showParallelScene(sceneName, returnSceneName) {
         pEl.innerHTML = scene.text || '';
         dialogText.appendChild(pEl);
     }
+    animateDialogText();
     
     dialogText.scrollTop = 0;
     
@@ -165,11 +173,9 @@ export function showParallelScene(sceneName, returnSceneName) {
             const viewedParallel = Object.values(groupProgress).filter(v => v.viewed).length;
             
             if (viewedParallel >= totalParallel && parentScene.continueAfterParallel) {
-                // Clear stored parent when leaving parallel group
                 setParentParallelScene(null);
                 showScene(parentScene.continueAfterParallel);
             } else {
-                // Clear stored parent when returning to parent choices
                 setParentParallelScene(null);
                 showChoicesForScene(parentScene, returnSceneName);
             }
