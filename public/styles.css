@@ -133,7 +133,7 @@ html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
     background: rgba(20, 20, 20, 0.8);
     color: #ddd;
     border: 2px solid rgba(235, 228, 255, 0.2);
-    padding: 12px 30px;
+    padding: 22px 40px;
     font-size: 24px;
     font-family: 'Georgia', serif;
     border-radius: 4px;

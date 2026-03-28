@@ -16,12 +16,7 @@
     "paragraph3": "Navigate through a world of interconnected paths where your perspective determines reality. The City adapts to your choices, revealing different secrets and endings based on the decisions you make along the way."
   },
   "content": {
-    "about_title": "About the Project",
-    "about_text": "This is the main text of the site. You can write articles, blocks, information, anything here.",
-    "section2_title": "Section 2",
-    "section2_text": "The next content block. All scrolling down hides the intro and opens text sections.",
-    "section3_title": "Section 3",
-    "section3_text": "You can add lots of text, images, cards, everything you need.",
+    "play": "▶  Play",
     "warning": {
     "title": "Warning",
     "text": "This is a web game, your progress and saves are stored in your browser and may be lost if you clear your browser data or switch to another device. But since the game is short, local saves will be enough."

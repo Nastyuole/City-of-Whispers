@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.2.1",
     "i18next": "^25.7.1",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
